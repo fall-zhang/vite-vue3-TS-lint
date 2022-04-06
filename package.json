@@ -6,17 +6,26 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,vue,jsx,tsx}": [
+      "prettier --write",
+      "eslint --cache --fix",
+      "git add"
+    ]
   },
   "dependencies": {
     "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
     "vue": "^3.2.25"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^2.3.0",
+    "husky": "^7.0.0",
     "typescript": "^4.5.4",
     "vite": "^2.9.0",
-    "vue-tsc": "^0.29.8",
-    "husky": "^7.0.0"
+    "vue-tsc": "^0.29.8"
   }
 }
