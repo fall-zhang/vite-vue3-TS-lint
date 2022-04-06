@@ -1,15 +1,18 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref } from 'vue'
 // import {Button } from ''
 // defineProps<{ msg: string }>()
 
-const count = ref(0);
+const count = ref(0)
+function onClick() {
+  count.value += 1
+}
 </script>
 
 <template>
   <h1>Todo List</h1>
   <h1>{{ count }}</h1>
-  <ElButton />
+  <ElButton @click="onClick">点击添加事件</ElButton>
   <p>开始开发一个 todoList</p>
 </template>
 
