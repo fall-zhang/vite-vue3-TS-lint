@@ -8,10 +8,10 @@
     "jsx": "preserve",
     "sourceMap": true,
     "resolveJsonModule": true,
-    // "isolatedModules": true, // 因为 esbuild 暂时不支持 enum，所以，暂时设置为 false 
+    // "isolatedModules": true, // 因为 esbuild 暂时不支持 enum，所以，暂时设置为 false
     "isolatedModules": false,
     "esModuleInterop": true,
-    "types": ["vite/client","element-plus/global"],
+    "types": ["vite/client", "element-plus/global"],
     "lib": ["esnext", "dom"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
