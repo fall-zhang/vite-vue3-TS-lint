@@ -1,20 +1,28 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import SearchVue from './Input/Search.vue'
 // import {Button } from ''
-// defineProps<{ msg: string }>()
+// defineProps<{ msg: string }>([;])
 const todoList = ref<Array<{ msg: string, done: boolean }>>([])
 const doneList = ref<Array<{ msg: string, done: boolean }>>([])
 function onAddEvent() {
-  todoList.value.push({ msg: 'df', done: false })
+  todoList.value.push({ msg: '', done: false })
 }
 function onDoneEvent(index: number) {
   const dropItem = todoList.value.splice(index, 1)
   doneList.value.push(...dropItem)
 }
 // function
+function onDropEvent(index: number) {
+  doneList.value.splice(index, 1)
+}
+const pageList = {
+  name:'what'
+}
 </script>
 
 <template>
+  <SearchVue :data="pageList" />
   <ElButton @click="onAddEvent">点击添加事件</ElButton>
   <p>未完成事项</p>
   <ul class="list">
@@ -26,8 +34,8 @@ function onDoneEvent(index: number) {
   <p>已完成事项</p>
   <ul class="list">
     <li v-for="(item, index) in doneList" :key="index" class="list_item">
-      <ElTag :value="item.msg"/>
-      <ElButton @click="onDoneEvent(index)">删除</ElButton>
+      <ElTag>{{ item.msg }}</ElTag>
+      <ElButton @click="onDropEvent(index)">删除</ElButton>
     </li>
   </ul>
 </template>
@@ -47,7 +55,7 @@ a {
     height: 32px;
     width: 800px;
     font-size: 14px;
-    background-color: aliceblue;
+    // background-color: aliceblue;
     display: flex;
     align-items: center;
     justify-content: center;

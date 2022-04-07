@@ -6,7 +6,7 @@ import ToDoList from './components/ToDoList.vue'
 
 <template>
   <h1>每天进步一点点</h1>
-  <ToDoList />
+  <ToDoList  />
 </template>
 
 <style>
