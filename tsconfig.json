@@ -12,7 +12,12 @@
     "isolatedModules": false,
     "esModuleInterop": true,
     "types": ["vite/client", "element-plus/global"],
-    "lib": ["esnext", "dom"]
+    "lib": ["esnext", "dom"],
+    "paths": {
+      "@/*":["src/*"],
+      "@C/*":["src/components/*"],
+      "@A/*":["src/asset/*"],
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "references": [{ "path": "./tsconfig.node.json" }]
