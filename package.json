@@ -11,7 +11,7 @@
     "commit": "git-cz"
   },
   "lint-staged": {
-    "*.{js,vue,jsx,tsx}": ["git add .","eslint --fix"],
+    "*.{js,vue,jsx,tsx}": ["eslint --fix"],
     "*.md": [
       "prettier --write"
     ]
@@ -47,7 +47,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "cz-customizable"
+      "path": "./node_modules/cz-customizable"
     }
   }
 }
