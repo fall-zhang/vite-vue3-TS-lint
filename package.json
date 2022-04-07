@@ -17,10 +17,6 @@
   },
   "dependencies": {
     "element-plus": "^2.1.8",
-    "lint-staged": "^12.3.7",
-    "prettier": "^2.6.2",
-    "unplugin-auto-import": "^0.6.9",
-    "unplugin-vue-components": "^0.18.5",
     "vue": "^3.2.25"
   },
   "devDependencies": {
@@ -28,6 +24,8 @@
     "@typescript-eslint/parser": "^5.18.0",
     "@vitejs/plugin-vue": "^2.3.0",
     "eslint": "^7.32.0",
+    "unplugin-auto-import": "^0.6.9",
+    "unplugin-vue-components": "^0.18.5",
     "eslint-config-standard": "^16.0.3",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -35,7 +33,9 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.2.0",
     "eslint-plugin-vue": "^8.6.0",
+    "prettier": "^2.6.2",
     "husky": "^7.0.4",
+    "lint-staged": "^12.3.7",
     "typescript": "^4.5.4",
     "vite": "^2.9.0",
     "vue-tsc": "^0.29.8"

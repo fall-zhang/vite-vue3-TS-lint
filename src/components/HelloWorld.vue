@@ -14,13 +14,21 @@ function onClick() {
   <h1>{{ count }}</h1>
   <ElButton @click="onClick">点击添加事件</ElButton>
   <p>开始开发一个 todoList</p>
+  <ul class="list"></ul>
 </template>
 
-<style scoped>
+<style lang="less" scoped>
 a {
   color: #42b983;
 }
-
+.list{
+  list-style: none;
+  li {
+    height: 32px;
+    font-size: 14px;
+    background-color: aliceblue;
+  }
+}
 label {
   margin: 0 0.5em;
   font-weight: bold;
