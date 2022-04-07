@@ -2,10 +2,10 @@
 // We suggest you to commit this file into source control
 // Read more: https://github.com/vuejs/vue-next/pull/3399
 
-declare module "vue" {
+declare module 'vue' {
   export interface GlobalComponents {
-    ElButton: typeof import("element-plus/es")["ElButton"];
+    ElButton: typeof import('element-plus/es')['ElButton'];
   }
 }
 
-export {};
+export {}
