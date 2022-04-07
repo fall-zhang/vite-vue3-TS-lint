@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 // import {Button } from ''
 // defineProps<{ msg: string }>()
-
 const count = ref(0)
 function onClick() {
   count.value += 1
@@ -15,6 +14,7 @@ function onClick() {
   <ElButton @click="onClick">点击添加事件</ElButton>
   <p>开始开发一个 todoList</p>
   <ul class="list"></ul>
+  <ElInput v-model="count"/>
 </template>
 
 <style lang="less" scoped>
