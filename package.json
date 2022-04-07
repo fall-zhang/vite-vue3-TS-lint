@@ -11,7 +11,7 @@
     "commit": "git-cz"
   },
   "lint-staged": {
-    "*.{js,vue,jsx,tsx}": "eslint --fix",
+    "*.{js,vue,jsx,tsx}": ["git add .","eslint --fix"],
     "*.md": [
       "prettier --write"
     ]
