@@ -16,9 +16,9 @@ function onDoneEvent(index: number) {
 function onDropEvent(index: number) {
   doneList.value.splice(index, 1)
 }
-const pageList = {
-  name:'what'
-}
+const pageList = [
+  {fduf:'dfdf'}
+]
 </script>
 
 <template>
@@ -65,10 +65,10 @@ label {
   margin: 0 0.5em;
   font-weight: bold;
 }
-:deep(.el-button) {
-  max-height: 600px; // 最大高度
-  background-color: cyan;
-}
+// :deep(.el-button) {
+//   max-height: 600px; // 最大高度
+//   background-color: cyan;
+// }
 code {
   background-color: #eee;
   padding: 2px 4px;
