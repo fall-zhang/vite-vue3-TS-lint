@@ -4,7 +4,7 @@ import type { RouteRecordRaw } from 'vue-router'
 import constRoute from './constRouter'
 const router = createRouter({
   history:createWebHistory(),
-  routes:
+  routes:constRoute as RouteRecordRaw[]
 })
 
 export default router
