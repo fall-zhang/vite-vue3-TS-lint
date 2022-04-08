@@ -225,7 +225,7 @@ export default defineComponent({
         formInline.value[v.field] = formInline.value[v.field] || v.value
       }
     }
-
+    
     async function submitForm(): Promise<void> {
       const form = unref(ruleForm) as any
       if (!form) return

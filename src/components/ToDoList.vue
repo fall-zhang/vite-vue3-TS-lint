@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import SearchVue from './Input/Search.vue'
+import SearchVue from '@/components/Input/Search.vue'
 // import {Button } from ''
 // defineProps<{ msg: string }>([;])
 const todoList = ref<Array<{ msg: string, done: boolean }>>([])
@@ -16,13 +16,20 @@ function onDoneEvent(index: number) {
 function onDropEvent(index: number) {
   doneList.value.splice(index, 1)
 }
-const pageList = [
-  {fduf:'dfdf'}
+const searchData = [
+  {
+    label: '角色名',
+    value: '',
+    itemType: 'input',
+    field: 'roleName',
+    placeholder: '请输入角色名',
+    clearable: true
+  }
 ]
 </script>
 
 <template>
-  <SearchVue :data="pageList" />
+  <SearchVue :data="searchData" />
   <ElButton @click="onAddEvent">点击添加事件</ElButton>
   <p>未完成事项</p>
   <ul class="list">

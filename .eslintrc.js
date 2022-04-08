@@ -28,5 +28,6 @@ module.exports = {
       },
     ],
     semi: [2, 'never'],
+    'no-irregular-whitespace': 2,
   },
 }
