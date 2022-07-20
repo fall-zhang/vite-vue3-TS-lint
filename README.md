@@ -8,8 +8,17 @@
 - commitizen 实现自定义提交内容（需要配合 `yarn commit` 使用）
 - 后续 vue3 项目可在此基础上进行开发
 
-### 正在施工中
+## 起步
 
-- 添加自定义搜索框内容，实现简单生成搜索框
-- 添加自定义 form 内容，简单生成 form
-- 自定义 drawer 数据详情功能
+- 克隆当前包到本地
+- `yarn` 安装所需依赖
+- `yarn prepare` 准备 husky 相关的内容
+- 使用 `yarn commit` 进行提交代码
+
+## 施工中
+
+- 添加一些已经预设好的 Component
+- 更新依赖包，将 Vite 升级到 3.0
+- 将自动导入功能进行提取放入其它文件夹内
+- 添加 mock 模拟后端
+- 将 less 改为 sass，统一为 element 的 css 样式编辑器
