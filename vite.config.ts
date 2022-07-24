@@ -8,6 +8,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  host:true, // 表示可以通过 ip 进行访问
   resolve: {
     alias: {
       '@': pathResolve(__dirname, 'src'),
@@ -18,9 +19,11 @@ export default defineConfig({
     vue(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
+      dts:'./public/auto-imports.d.ts'
     }),
     Components({
       resolvers: [ElementPlusResolver()],
+      dts:'./public/components.d.ts'
     }),
   ],
 })

@@ -21,8 +21,8 @@ declare module 'vue' {
     ElTimePicker: typeof import('element-plus/es')['ElTimePicker']
     ElTimeSelect: typeof import('element-plus/es')['ElTimeSelect']
     HelloWorld: typeof import('./src/components/HelloWorld.vue')['default']
-    Search: typeof import('./src/components/Input/Search.vue')['default']
-    ToDoList: typeof import('./src/components/ToDoList.vue')['default']
+    Search: typeof import('../src/components/Input/Search.vue')['default']
+    ToDoList: typeof import('../src/components/ToDoList.vue')['default']
   }
 }
 
