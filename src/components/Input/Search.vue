@@ -170,8 +170,8 @@ export default defineComponent({
     },
     // 表单数据对象
     data: {
-      type: Object as PropType<{ [key: string]: any }>,
-      default: () => ({})
+      type: Array<Record<string,any>>,
+      default: () => ([])
     },
     // 表单验证规则
     rules: {

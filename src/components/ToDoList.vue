@@ -29,6 +29,7 @@ const searchData = [
 </script>
 
 <template>
+  段欧股
   <SearchVue :data="searchData" />
   <ElButton @click="onAddEvent">点击添加事件</ElButton>
   <p>未完成事项</p>
@@ -51,6 +52,7 @@ const searchData = [
 a {
   color: #42b983;
 }
+
 .list {
   list-style: none;
   display: flex;
@@ -58,6 +60,7 @@ a {
   flex-flow: column nowrap;
   align-content: center;
   align-items: center;
+
   .list_item {
     height: 32px;
     width: 800px;
@@ -68,10 +71,12 @@ a {
     justify-content: center;
   }
 }
+
 label {
   margin: 0 0.5em;
   font-weight: bold;
 }
+
 // :deep(.el-button) {
 //   max-height: 600px; // 最大高度
 //   background-color: cyan;
