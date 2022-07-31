@@ -3,11 +3,12 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  // global: {
-  //   // vue 的全局变量
-  //   ref: true,
-  //   reactive: true,
-  // },
+  globals: {
+    // vue 的全局变量
+    defineProps: true,
+    // ref: true,
+    reactive: true
+  },
   extends: ['plugin:vue/vue3-strongly-recommended', 'standard', 'prettier'],
   parserOptions: {
     ecmaVersion: 'latest',

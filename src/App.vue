@@ -1,8 +1,3 @@
-<script setup lang="ts">
-// import ToDoList from '@C/ToDoList.vue'
-import PageLayout from '@/layout/PageLayout.vue'
-</script>
-
 <template>
   <!-- <h1>每天进步一点点</h1> -->
   <!-- <ToDoList  /> -->
@@ -18,10 +13,13 @@ import PageLayout from '@/layout/PageLayout.vue'
     <template #aside></template>
   </PageLayout>
 </template>
-
+<script lang="ts" setup>
+import PageLayout from '@/layout/PageLayout.vue'
+// eslint-disable-next-line no-undef
+// const dl = ref(123)
+</script>
 <style lang="scss" >
 @import './styles/Basic.scss';
-
 // .hiu {
 //   opacity: 1;
 // }
