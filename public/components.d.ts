@@ -9,7 +9,6 @@ declare module 'vue' {
     ElFooter: typeof import('element-plus/es')['ElFooter']
     ElHeader: typeof import('element-plus/es')['ElHeader']
     ElMain: typeof import('element-plus/es')['ElMain']
-    ElMenu: typeof import('element-plus/es')['ElMenu']
     Search: typeof import('./../src/components/Input/Search.vue')['default']
     ToDoList: typeof import('./../src/components/ToDoList.vue')['default']
   }

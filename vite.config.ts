@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
-import {resolve as pathResolve}  from 'path'
+import { resolve as pathResolve } from 'path'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
@@ -12,18 +12,22 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': pathResolve(__dirname, 'src'),
-      '@C': pathResolve(__dirname, 'src/components'),
-    },
+      '@C': pathResolve(__dirname, 'src/components')
+    }
   },
   plugins: [
     vue(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
-      dts:'./public/auto-imports.d.ts'
+      dts: './public/auto-imports.d.ts',
+      imports: ['vue'],
+      eslintrc: {
+        enabled: true
+      }
     }),
     Components({
       resolvers: [ElementPlusResolver()],
-      dts:'./public/components.d.ts'
-    }),
-  ],
+      dts: './public/components.d.ts'
+    })
+  ]
 })
