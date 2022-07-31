@@ -40,5 +40,10 @@
   </el-menu>
 </template>
 <script lang="ts" setup>
+const handleOpen = function () {
 
+}
+const handleClose = function () {
+
+}
 </script>

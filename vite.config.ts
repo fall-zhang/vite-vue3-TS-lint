@@ -19,15 +19,15 @@ export default defineConfig({
     vue(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
-      dts: './public/auto-imports.d.ts',
-      imports: ['vue'],
-      eslintrc: {
-        enabled: true
-      }
+      dts: './src/global/auto-imports.d.ts',
+      imports: ['vue']
+      // eslintrc: {
+      //   enabled: true
+      // }
     }),
     Components({
       resolvers: [ElementPlusResolver()],
-      dts: './public/components.d.ts'
+      dts: './src/global/components.d.ts'
     })
   ]
 })
