@@ -6,7 +6,7 @@ import PageLayout from '@/layout/PageLayout.vue'
 <template>
   <!-- <h1>每天进步一点点</h1> -->
   <!-- <ToDoList  /> -->
-  <PageLayout>
+  <PageLayout title="模块查看系统">
     <template #header>
     </template>
     都是借口

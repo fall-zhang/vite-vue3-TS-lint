@@ -2,7 +2,7 @@
   <el-container>
     <el-header class="header">
       <slot name="header">
-        <div class="title">请输入标题名称</div>
+        <div class="title">{{ title }}</div>
         <div></div>
       </slot>
     </el-header>
@@ -46,7 +46,8 @@ defineProps({
   justify-content: space-between;
   align-items: center;
   box-shadow: 1px 1px 12px #bbb;
-  .title{
+
+  .title {
     font-weight: 550;
     font-size: 32px;
     text-shadow: 1px 1px 12px #ccc;
