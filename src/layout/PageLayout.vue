@@ -2,8 +2,8 @@
   <el-container>
     <el-header class="header">
       <slot name="header">
-        <div class="title">模块查看系统</div>
-        <div>模块查看系统</div>
+        <div class="title">请输入标题名称</div>
+        <div></div>
       </slot>
     </el-header>
     <el-container class="container">
