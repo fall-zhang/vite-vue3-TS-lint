@@ -29,7 +29,6 @@
 </template>
 <script lang="ts" setup>
 import { SideMenu } from '@/layout'
-import { defineProps } from 'vue'
 defineProps({
   title: {
     require: false,

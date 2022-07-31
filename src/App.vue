@@ -7,7 +7,7 @@
     都是借口
     <template v-if="true">
       <div class="hiu">
-        人生就是这样
+        人生就是这样{{ dl }}
       </div>
     </template>
     <template #aside></template>
@@ -16,7 +16,7 @@
 <script lang="ts" setup>
 import PageLayout from '@/layout/PageLayout.vue'
 // eslint-disable-next-line no-undef
-// const dl = ref(123)
+const dl = ref(123)
 </script>
 <style lang="scss" >
 @import './styles/Basic.scss';
