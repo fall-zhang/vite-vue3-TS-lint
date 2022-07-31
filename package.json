@@ -23,7 +23,7 @@
     "commitlint-config-cz": "^0.13.3",
     "cz-customizable": "^6.3.0",
     "element-plus": "^2.1.8",
-    "less": "^4.1.2",
+    "sass": "^1.54.0",
     "vue": "^3.2.25",
     "vue-router": "^4.0.14"
   },
@@ -48,6 +48,9 @@
     "unplugin-vue-components": "^0.18.5",
     "vite": "^3.0.4",
     "vue-tsc": "^0.29.8"
+  },
+  "commitlint":{
+    "extends":"cz"
   },
   "config": {
     "commitizen": {

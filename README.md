@@ -15,6 +15,10 @@
 - `yarn prepare` 准备 husky 相关的内容
 - 使用 `yarn commit` 进行提交代码
 
+## 文件组成
+
+-
+
 ## 施工中
 
 - 添加一些已经预设好的 Component

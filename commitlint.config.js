@@ -1,5 +1,5 @@
-module.exports = {
-  extends: [
-    'cz'
-  ]
-}
+// module.exports = {
+//   extends: [
+//     'cz'
+//   ]
+// }

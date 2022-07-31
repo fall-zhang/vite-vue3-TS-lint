@@ -1,19 +1,28 @@
 <script setup lang="ts">
-import ToDoList from '@C/ToDoList.vue'
+// import ToDoList from '@C/ToDoList.vue'
+import PageLayout from '@/layout/PageLayout.vue'
 </script>
 
 <template>
   <!-- <h1>每天进步一点点</h1> -->
-  <ToDoList  />
+  <!-- <ToDoList  /> -->
+  <PageLayout>
+    <template #header>
+    </template>
+    都是借口
+    <template v-if="true">
+      <div class="hiu">
+        人生就是这样
+      </div>
+    </template>
+    <template #aside></template>
+  </PageLayout>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss" >
+@import './styles/Basic.scss';
+
+// .hiu {
+//   opacity: 1;
+// }
 </style>
