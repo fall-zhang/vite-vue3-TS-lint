@@ -4,12 +4,15 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    _collection: typeof import('./../src/components/_collection/index.vue')['default']
+    CollectionItem: typeof import('./../src/components/_collection/CollectionItem.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
+    ElButton: typeof import('element-plus/es')['ElButton']
+    ElCard: typeof import('element-plus/es')['ElCard']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElFooter: typeof import('element-plus/es')['ElFooter']
     ElHeader: typeof import('element-plus/es')['ElHeader']
     ElMain: typeof import('element-plus/es')['ElMain']
-    ElMenu: typeof import('element-plus/es')['ElMenu']
     Search: typeof import('./../src/components/Input/Search.vue')['default']
     ToDoList: typeof import('./../src/components/ToDoList.vue')['default']
   }

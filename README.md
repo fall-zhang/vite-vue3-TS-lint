@@ -15,9 +15,11 @@
 - `yarn prepare` 准备 husky 相关的内容
 - 使用 `yarn commit` 进行提交代码
 
-## 文件组成
+## 开发规范
 
--
+- 引入的所有包，都通过 `-` 进行连接，例如：my-button
+- 所有自定义的包，都通过大写进行引入，例如：MyButton
+- 所有的包，名称都是 MyButton，使用大写字母
 
 ## 施工中
 
@@ -26,3 +28,8 @@
 - 将自动导入功能进行提取放入其它文件夹内
 - 添加 mock 模拟后端
 - 将 less 改为 sass，统一为 element 的 css 样式编辑器
+- 添加 collection 收集器，用来收集所有组件
+
+## 预设 Component
+
+- [ ] 读取 Component 下的所有文件，然后每个文件生成一个组件库

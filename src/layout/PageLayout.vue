@@ -7,7 +7,7 @@
       </slot>
     </el-header>
     <el-container class="container">
-      <el-aside class="aside">
+      <el-aside class="aside" v-if="!noSide">
         <slot name="aside">
           <SideMenu></SideMenu>
         </slot>
@@ -29,14 +29,12 @@
 </template>
 <script lang="ts" setup>
 // import { SideMenu } from '@/layout/SideMenu.vue'
-import { defineProps } from 'vue'
-defineProps({
-  title: {
-    require: false,
-    type: String,
-    default: ''
-  }
-})
+// import { defineProps } from 'vue'
+defineProps<{
+  title?: string,
+  noSide?: boolean,
+  nohead?: boolean,
+}>()
 // const height = '200px'
 </script>
 <style lang="scss">
@@ -58,9 +56,13 @@ defineProps({
   height: calc(100vh - 60px - 30px);
 
   // background-color: aqua;
-  .aside {}
+  .aside {
+    background-color: #bbb;
+  }
 
-  .main {}
+  .main {
+    background-color: #ccc;
+  }
 }
 
 .footer {

@@ -3,6 +3,9 @@ module.exports = {
     browser: true,
     es2021: true,
   },
+  globals: {
+    defineProps: true
+  },
   extends: ['plugin:vue/vue3-strongly-recommended', 'standard', 'prettier'],
   parserOptions: {
     ecmaVersion: 'latest',
