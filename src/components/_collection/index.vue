@@ -12,8 +12,8 @@ const gridRowCount = computed(() => {
   <!-- <ToDoList  /> -->
   <PageLayout title="模块查看系统" no-side>
     <div class="collection">
-      <CollectionItem v-for="item in 9" :key="item">
-        <div style="font-size: 46px">难难啊难</div>
+      <CollectionItem v-for="item in 16" :key="item">
+        <div style="font-size: 46px">难难啊难,这里面放置组件</div>
       </CollectionItem>
     </div>
   </PageLayout>
@@ -26,9 +26,12 @@ const gridRowCount = computed(() => {
   min-height: 40vh;
   grid-template-rows: repeat(v-bind(gridRowCount), 1fr);
 }
-</style>
-<script>
-export default {
-  name: 'CollectionIndex'
+
+.collection-item {
+  height: 28vh;
 }
+</style>
+
+<script lang="ts">
+export default { name: 'CollectionIndex' }
 </script>

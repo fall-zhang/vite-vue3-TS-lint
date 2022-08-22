@@ -1,5 +1,5 @@
 <template>
-  <el-card>
+  <el-card class="collection-item">
     <template #header>
       <div class="card-header">
         <span>{{ title }}</span>
