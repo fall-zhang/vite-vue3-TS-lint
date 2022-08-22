@@ -12,7 +12,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': pathResolve(__dirname, 'src'),
-      '@C': pathResolve(__dirname, 'src/components')
+      '@C': pathResolve(__dirname, 'src/components'),
+      '@V': pathResolve(__dirname, 'src/views')
     }
   },
   plugins: [
