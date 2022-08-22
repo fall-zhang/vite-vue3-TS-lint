@@ -14,7 +14,7 @@
       </el-aside>
       <el-main class="main">
         <slot>
-          倒贴钱
+          <router-view />
         </slot>
       </el-main>
     </el-container>
@@ -48,7 +48,7 @@ defineProps<{
   .title {
     font-weight: 550;
     font-size: 32px;
-    text-shadow: 1px 1px 12px #ccc;
+    text-shadow: 1px 1px 12px #ddd;
   }
 }
 

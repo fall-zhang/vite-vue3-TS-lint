@@ -7,7 +7,7 @@ const constRouters: RouteRecordRaw[] = [
     children: [
       {
         path: '/redirect/:path*',
-        component: () => import('@C/Redirect/index.vue'),
+        component: () => import('@V/LayoutPage1/index.vue'),
         meta: {}
       }
     ],
@@ -15,5 +15,33 @@ const constRouters: RouteRecordRaw[] = [
       hidden: true
     }
   },
+  {
+    path: '/home',
+    component: BlankLayout,
+    children: [
+      {
+        path: '/redirect/:path*',
+        component: () => import('@V/LayoutPage1/index.vue'),
+        meta: {}
+      }
+    ],
+    meta: {
+      hidden: true
+    }
+  },
+  {
+    path: '/*',
+    component: BlankLayout,
+    children: [
+      {
+        path: '/redirect/:path*',
+        component: () => import('@V/LayoutPage1/index.vue'),
+        meta: {}
+      }
+    ],
+    meta: {
+      hidden: true
+    }
+  }
 ]
 export default constRouters

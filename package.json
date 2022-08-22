@@ -49,8 +49,8 @@
     "vite": "^3.0.4",
     "vue-tsc": "^0.29.8"
   },
-  "commitlint":{
-    "extends":"cz"
+  "commitlint": {
+    "extends": "cz"
   },
   "config": {
     "commitizen": {
