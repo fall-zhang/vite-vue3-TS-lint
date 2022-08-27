@@ -23,14 +23,17 @@
 
 ## 施工中
 
-- 添加一些已经预设好的 Component
+- 该项目只提供组件内容，以及展示组件，不包括页面逻辑之类（只有展示组件的页面，菜单逻辑等，可根据需要自行实现）
+- 默认解析 `src/views` 下的文件为路由，文件夹以 `_` 开头时会忽略解析。
+- 读取 Component 下的所有文件，在 `components` 路由下面展示，可自行跳转到 `components` 路由下面查看
+- 添加一些已经预设好的 Component 该路由支持
 - 配置 vue-router 路由
-- [ x ] 更新依赖包，将 Vite 升级到 3.0
+- css 预处理器为 sass，统一为 element 的 css 样式编辑器
+- 并且支持 tailwind 支持
 - 将自动导入功能进行提取放入其它文件夹内
-- 添加 mock 模拟后端
-- 将 less 改为 sass，统一为 element 的 css 样式编辑器
 - 添加 collection 收集器，用来收集所有组件
+<!-- - 添加 mock 模拟后端 -->
 
 ## 预设 Component
 
-- [ ] 读取 Component 下的所有文件，然后每个文件生成一个组件库
+- [ x ] 更新依赖包，将 Vite 升级到 3.0
