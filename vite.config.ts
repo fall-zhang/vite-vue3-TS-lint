@@ -21,7 +21,7 @@ export default defineConfig({
     AutoImport({
       resolvers: [ElementPlusResolver()],
       dts: './src/global/auto-imports.d.ts',
-      imports: ['vue']
+      imports: ['vue', 'vue-router']
       // eslintrc: {
       //   enabled: true
       // }

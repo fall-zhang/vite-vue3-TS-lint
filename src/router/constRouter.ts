@@ -1,5 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { BlankLayout } from '../layout'
+// import { BlankLayout } from '../layout'
+import ComponentCollection from '@C/_collection/index.vue'
 const constRouters: RouteRecordRaw[] = [
   {
     path: '/redirect',
@@ -10,10 +12,7 @@ const constRouters: RouteRecordRaw[] = [
         component: () => import('@V/LayoutPage1/index.vue'),
         meta: {}
       }
-    ],
-    meta: {
-      hidden: true
-    }
+    ]
   },
   {
     path: '/home',
@@ -24,24 +23,34 @@ const constRouters: RouteRecordRaw[] = [
         component: () => import('@V/LayoutPage1/index.vue'),
         meta: {}
       }
-    ],
-    meta: {
-      hidden: true
-    }
+    ]
   },
   {
-    path: '/*',
-    component: BlankLayout,
+    path: '/',
+    redirect: '/home',
+  },
+  {
+    path: '/components',
+    component: ComponentCollection,
     children: [
       {
         path: '/redirect/:path*',
         component: () => import('@V/LayoutPage1/index.vue'),
         meta: {}
       }
-    ],
-    meta: {
-      hidden: true
-    }
+    ]
+  },
+  {
+    path: '/*',
+    component: ComponentCollection,
+    redirect: '/components',
+    children: [
+      {
+        path: '/redirect/:path*',
+        component: () => import('@V/LayoutPage1/index.vue'),
+        meta: {}
+      }
+    ]
   }
 ]
 export default constRouters

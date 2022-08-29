@@ -1,10 +1,13 @@
 <script setup lang="ts">
 // import ToDoList from '@C/ToDoList.vue'
-import CollectionPage from '@/components/_collection/index.vue'
+// import CollectionItem from '@/components/_collection/CollectionItem.vue'
+import PageLayout from './layout/PageLayout.vue'
 </script>
 
 <template>
-  <CollectionPage></CollectionPage>
+  <PageLayout title="模块查看系统" no-side>
+    <router-view></router-view>
+  </PageLayout>
 </template>
 
 <style lang="scss">
