@@ -12,13 +12,32 @@
     // "isolatedModules": true, // 因为 esbuild 暂时不支持 enum，所以，暂时设置为 false
     "isolatedModules": false,
     "esModuleInterop": true,
-    "types": ["vite/client", "element-plus/global"],
-    "lib": ["esnext", "dom"],
+    "types": [
+      "vite/client",
+      "element-plus/global"
+    ],
+    "lib": [
+      "esnext",
+      "dom"
+    ],
     "paths": {
-      "@/*":["src/*"],
-      "@C/*":["src/components/*"],
+      "@/*": [
+        "src/*"
+      ],
+      "@C/*": [
+        "src/components/*"
+      ],
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
