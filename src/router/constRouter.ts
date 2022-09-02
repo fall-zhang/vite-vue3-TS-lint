@@ -13,8 +13,7 @@ const constRouters: RouteRecordRaw[] = [
         meta: {}
       }
     ]
-  },
-  {
+  }, {
     path: '/home',
     component: BlankLayout,
     children: [
@@ -24,12 +23,10 @@ const constRouters: RouteRecordRaw[] = [
         meta: {}
       }
     ]
-  },
-  {
+  }, {
     path: '/',
-    redirect: '/home',
-  },
-  {
+    redirect: '/components',
+  }, {
     path: '/components',
     component: ComponentCollection,
     children: [
@@ -39,8 +36,7 @@ const constRouters: RouteRecordRaw[] = [
         meta: {}
       }
     ]
-  },
-  {
+  }, {
     path: '/*',
     component: ComponentCollection,
     redirect: '/components',

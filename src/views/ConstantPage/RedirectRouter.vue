@@ -4,7 +4,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   components: {
 
@@ -29,5 +29,5 @@ export default {
 }
 </script>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 </style>

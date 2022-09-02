@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // import ToDoList from '@C/ToDoList.vue'
 // import CollectionItem from '@/components/_collection/CollectionItem.vue'
-import PageLayout from './layout/PageLayout.vue'
+import { PageLayout } from './layout'
 </script>
 
 <template>
