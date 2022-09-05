@@ -12,7 +12,7 @@ const gridRowCount = computed(() => {
   <!-- <ToDoList  /> -->
   <PageLayout title="模块查看系统" no-side>
     <div class="collection">
-      <CollectionItem v-for="item in 16" :key="item">
+      <CollectionItem v-for="item in 16" title="模块查看系统" :key="item" :arguments="{ name: true }">
         <div style="font-size: 46px">难难啊难,这里面放置组件</div>
       </CollectionItem>
     </div>
