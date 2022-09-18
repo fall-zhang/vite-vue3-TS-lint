@@ -2,10 +2,16 @@
 // import ToDoList from '@C/ToDoList.vue'
 // import CollectionItem from '@/components/_collection/CollectionItem.vue'
 import { PageLayout } from './layout'
+import { useRoute } from 'vue-router'
+const route = useRoute()
+const title = ref('模板系统')
+if (route.meta.pageTitle && typeof route.meta.pageTitle === 'string') {
+  title.value = route.meta.pageTitle
+}
 </script>
 
 <template>
-  <PageLayout title="模块查看系统" no-side>
+  <PageLayout :title="title" no-side>
     <router-view></router-view>
   </PageLayout>
 </template>

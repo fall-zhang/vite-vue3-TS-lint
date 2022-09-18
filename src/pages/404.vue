@@ -1,8 +1,10 @@
 <template>
   <div>
-    <el-result icon="error" title="Error Tip" sub-title="Please follow the instructions">
+    <el-result icon="error" title="Error 404" sub-title="您请求的页面不存在">
       <template #extra>
-        <el-button type="primary">Back</el-button>
+        <router-link to="/">
+          <el-button type="primary">返回首页</el-button>
+        </router-link>
       </template>
     </el-result>
   </div>
@@ -12,7 +14,9 @@
 </script>
 
 <style scoped lang="scss">
-
+a {
+  text-decoration: none
+}
 </style>
 <script>
 export default {

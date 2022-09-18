@@ -31,11 +31,12 @@ const constRouters: RouteRecordRaw[] = [
   }, {
     path: '/components',
     component: isDevelopment ? () => import('@C/_collection/index.vue') : ErrorPage404,
+    meta: { pageTitle: '模块查看系统' },
     children: [
       {
         path: '/redirect/:path*',
         component: () => import('@V/LayoutPage1/index.vue'),
-        meta: {}
+        meta: { pageTitle: '模块查看系统' }
       }
     ]
   }, {

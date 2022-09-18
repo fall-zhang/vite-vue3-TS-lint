@@ -12,6 +12,7 @@
 - Vite+TypeScript+Vue3+Element
 - 内置代码检查工具 eslint
 - husky + commitlint + lint-staged 实现推送代码的时候进行强制检查推送内容
+- husky + commitizen + cz-customizable 实现统一化推送消息内容
 - 配置好 element-plus + vue-router
 - commitizen 实现自定义提交内容（需要配合 `yarn commit`，或者 `npm run commit` 使用）
 - 后续 vue3 项目可在此基础上进行开发
@@ -38,3 +39,4 @@
 ## 预设 Component
 
 - [ x ] 更新依赖包，将 Vite 升级到 3.0
+- [ x ] 特殊路由 components 打包内容仅在开发环境下可见
