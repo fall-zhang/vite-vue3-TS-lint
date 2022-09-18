@@ -4,7 +4,7 @@ module.exports = {
     es2021: true
   },
   globals: {
-    // 定义 vue 自动引入的全局变量，防止报错
+    // 定义 vue 自动引入的全局变量，防止eslint报错
     defineProps: true,
     defineEmits: true,
     ref: true,

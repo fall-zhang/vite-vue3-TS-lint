@@ -1,12 +1,4 @@
-## Vite+TypeScript+Vue3+Element
-
-### 配置好工具包，开箱即用
-
-- 内置代码检查工具 eslint
-- husky + commitlint + lint-staged 实现推送代码的时候进行强制检查推送内容
-- 配置好 element-plus + vue-router
-- commitizen 实现自定义提交内容（需要配合 `yarn commit` 使用）
-- 后续 vue3 项目可在此基础上进行开发
+> 开箱即用的 vue3 模板
 
 ## 起步
 
@@ -15,10 +7,19 @@
 - `yarn prepare` 准备 husky 相关的内容
 - 使用 `yarn commit` 进行提交代码
 
+## 特性
+
+- Vite+TypeScript+Vue3+Element
+- 内置代码检查工具 eslint
+- husky + commitlint + lint-staged 实现推送代码的时候进行强制检查推送内容
+- 配置好 element-plus + vue-router
+- commitizen 实现自定义提交内容（需要配合 `yarn commit`，或者 `npm run commit` 使用）
+- 后续 vue3 项目可在此基础上进行开发
+
 ## 开发规范
 
-- 引入的所有包，都通过 `-` 进行连接，例如：my-button
-- 所有自定义的包，都通过大写进行引入，例如：MyButton
+- 所有包，都通过大写进行引入，例如：`MyButton.vue`
+- 使用 ESlint 代码规范（如果是 vscode 建议在配置中打开 eslint 的代码格式化功能，作为代码格式化工具）
 - 所有的包，名称都是 MyButton，使用大写字母
 
 ## 施工中

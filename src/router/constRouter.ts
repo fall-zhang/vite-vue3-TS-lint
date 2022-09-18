@@ -1,6 +1,8 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { BlankLayout } from '../layout'
 // import { BlankLayout } from '../layout'
+import { isDevelopment } from '@/config'
+import ErrorPage404 from '@/pages/404.vue'
 import ComponentCollection from '@C/_collection/index.vue'
 const constRouters: RouteRecordRaw[] = [
   {
@@ -28,7 +30,7 @@ const constRouters: RouteRecordRaw[] = [
     redirect: '/components',
   }, {
     path: '/components',
-    component: ComponentCollection,
+    component: isDevelopment ? () => import('@C/_collection/index.vue') : ErrorPage404,
     children: [
       {
         path: '/redirect/:path*',
@@ -39,6 +41,7 @@ const constRouters: RouteRecordRaw[] = [
   }, {
     path: '/*',
     component: ComponentCollection,
+    name: '',
     redirect: '/components',
     children: [
       {
