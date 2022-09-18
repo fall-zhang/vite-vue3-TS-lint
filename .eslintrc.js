@@ -8,6 +8,7 @@ module.exports = {
     defineProps: true,
     defineEmits: true,
     ref: true,
+    watch: true,
     reactive: true
   },
   extends: ['plugin:vue/vue3-strongly-recommended', 'standard', 'prettier'],

@@ -5,9 +5,14 @@ import { PageLayout } from './layout'
 import { useRoute } from 'vue-router'
 const route = useRoute()
 const title = ref('模板系统')
-if (route.meta.pageTitle && typeof route.meta.pageTitle === 'string') {
-  title.value = route.meta.pageTitle
-}
+console.log(route.meta.pageTitle === 'string')
+watch(route, (newVal) => {
+  if (route.meta.pageTitle && typeof newVal.meta.pageTitle === 'string') {
+    title.value = newVal.meta.pageTitle
+  }
+}, {
+  immediate: true
+})
 </script>
 
 <template>
