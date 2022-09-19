@@ -11,7 +11,7 @@ const constRouters: RouteRecordRaw[] = [
     children: [
       {
         path: '/redirect/:path*',
-        component: () => import('@V/LayoutPage1/index.vue'),
+        component: () => import('@P/LayoutPage1/index.vue'),
         meta: {}
       }
     ]
@@ -21,7 +21,7 @@ const constRouters: RouteRecordRaw[] = [
     children: [
       {
         path: '/redirect/:path*',
-        component: () => import('@V/LayoutPage1/index.vue'),
+        component: () => import('@P/LayoutPage1/index.vue'),
         meta: {}
       }
     ]
@@ -35,7 +35,7 @@ const constRouters: RouteRecordRaw[] = [
     children: [
       {
         path: '/redirect/:path*',
-        component: () => import('@V/LayoutPage1/index.vue'),
+        component: () => import('@P/LayoutPage1/index.vue'),
         meta: { pageTitle: '模块查看系统' }
       }
     ]
@@ -47,7 +47,7 @@ const constRouters: RouteRecordRaw[] = [
     children: [
       {
         path: '/redirect/:path*',
-        component: () => import('@V/LayoutPage1/index.vue'),
+        component: () => import('@P/LayoutPage1/index.vue'),
         meta: {}
       }
     ]
