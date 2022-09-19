@@ -37,6 +37,7 @@ module.exports = {
       }
     ],
     semi: [2, 'never'],
-    'no-irregular-whitespace': 2
+    'no-irregular-whitespace': 2,
+    '@typescript-eslint/no-explicit-any': 1
   }
 }

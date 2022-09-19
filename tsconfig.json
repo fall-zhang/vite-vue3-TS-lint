@@ -27,6 +27,9 @@
       "@C/*": [
         "src/components/*"
       ],
+      "@P/*": [
+        "src/pages/*"
+      ],
     }
   },
   "include": [
