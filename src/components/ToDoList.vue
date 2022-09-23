@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import SearchVue from '@/components/Input/Search.vue'
-// import {Button } from ''
-// defineProps<{ msg: string }>([;])
-const todoList = ref<Array<{ msg: string, done: boolean }>>([])
-const doneList = ref<Array<{ msg: string, done: boolean }>>([])
+const todoList = ref<Array<{ msg: string; done: boolean }>>([])
+const doneList = ref<Array<{ msg: string; done: boolean }>>([])
 function onAddEvent() {
   todoList.value.push({ msg: '', done: false })
 }
@@ -39,7 +37,7 @@ const searchData = [
       <ElButton @click="onDoneEvent(index)">完成</ElButton>
     </li>
   </ul>
-  <p>已完成事项</p>
+  <p $attrs>已完成事项</p>
   <ul class="list">
     <li v-for="(item, index) in doneList" :key="index" class="list_item">
       <ElTag>{{ item.msg }}</ElTag>
