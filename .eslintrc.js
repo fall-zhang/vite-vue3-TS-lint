@@ -4,14 +4,15 @@ module.exports = {
     es2021: true
   },
   globals: {
-    // 定义 vue 自动引入的全局变量，防止eslint报错
+    // 定义 vue 自动引入的全局变量，防止 eslint 报错
     defineProps: true,
     defineEmits: true,
     ref: true,
     watch: true,
     reactive: true
   },
-  extends: ['plugin:vue/vue3-strongly-recommended', 'standard', 'prettier'],
+  // 后者会覆盖前者
+  extends: ['standard', 'prettier', 'plugin:vue/vue3-strongly-recommended'],
   parserOptions: {
     ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
@@ -21,6 +22,7 @@ module.exports = {
   rules: {
     'vue/first-attribute-linebreak': 0,
     'vue/no-multiple-template-root': 0,
+    'vue/html-self-closing': 0,
     'vue/max-attributes-per-line': [
       2,
       {
