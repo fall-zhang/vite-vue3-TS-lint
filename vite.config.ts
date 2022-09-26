@@ -13,7 +13,7 @@ export default defineConfig({
     alias: {
       '@': pathResolve(__dirname, 'src'),
       '@C': pathResolve(__dirname, 'src/components'),
-      '@V': pathResolve(__dirname, 'src/views')
+      '@P': pathResolve(__dirname, 'src/pages')
     }
   },
   plugins: [
@@ -21,7 +21,7 @@ export default defineConfig({
     AutoImport({
       resolvers: [ElementPlusResolver()],
       dts: './src/global/auto-imports.d.ts',
-      imports: ['vue']
+      imports: ['vue', 'vue-router']
       // eslintrc: {
       //   enabled: true
       // }

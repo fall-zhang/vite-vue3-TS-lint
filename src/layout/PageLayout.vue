@@ -2,7 +2,9 @@
   <el-container>
     <el-header class="header">
       <slot name="header">
-        <div class="title">{{ title }}</div>
+        <div class="title">
+          {{ title }}
+        </div>
         <div></div>
       </slot>
     </el-header>
@@ -28,7 +30,7 @@
   </el-container>
 </template>
 <script lang="ts" setup>
-// import { SideMenu } from '@/layout/SideMenu.vue'
+import SideMenu from '@/layout/SideMenu.vue'
 // import { defineProps } from 'vue'
 defineProps<{
   title?: string,

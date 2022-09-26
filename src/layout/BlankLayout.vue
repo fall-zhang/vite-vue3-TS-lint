@@ -1,12 +1,12 @@
 <template>
-  <div>
-
-  </div>
+  <router-view>
+  </router-view>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
+
 </script>
 
-<style scoped lang="less">
+<style scoped lang="scss">
 
 </style>
