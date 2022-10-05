@@ -26,5 +26,7 @@ declare module '@vue/runtime-core' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SpecialCoppt: typeof import('./../components/Input/SpecialCoppt.vue')['default']
+    SpicalInput: typeof import('./../components/Input/SpicalInput.vue')['default']
   }
 }

@@ -7,8 +7,10 @@ module.exports = {
     // 定义 vue 自动引入的全局变量，防止 eslint 报错
     defineProps: true,
     defineEmits: true,
+    onMounted: true,
     ref: true,
     watch: true,
+    defineExpose: true,
     reactive: true
   },
   // 后者会覆盖前者
@@ -21,6 +23,8 @@ module.exports = {
   plugins: ['vue', '@typescript-eslint'],
   rules: {
     'vue/first-attribute-linebreak': 0,
+    'vue/html-closing-bracket-newline': 0,
+    'vue/html-indent': 0,
     'vue/no-multiple-template-root': 0,
     'vue/html-self-closing': 0,
     'vue/max-attributes-per-line': [
