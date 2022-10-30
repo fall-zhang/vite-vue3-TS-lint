@@ -5,6 +5,8 @@
 declare module 'vue' {
   export interface GlobalComponents {
     _collection: typeof import('./../components/_collection/index.vue')['default']
+    CelebrateButton: typeof import('./../components/animation/CelebrateButton.vue')['default']
+    CelebrateConfetti: typeof import('./../components/animation/CelebrateConfetti.vue')['default']
     CollectionItem: typeof import('./../components/_collection/CollectionItem.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']

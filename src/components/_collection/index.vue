@@ -8,10 +8,39 @@ const gridRowCount = computed(() => {
 
 <template>
   <div class="collection">
-    <CollectionItem v-for="item in 16" title="模块查看系统" :key="item" :arguments="{ name: true }">
-      <div style="font-size: 46px">
+    <CollectionItem v-for="item in 4" title="模块查看系统" :key="item" :arguments="{ name: true }">
+      <h1>
         难难啊难,这里面放置组件
-      </div>
+      </h1>
+    </CollectionItem>
+    <CollectionItem v-for="item in 2" title="模块查看系统" :key="item" :arguments="{ name: true }">
+      <h1>
+        难难啊难,这里面放置组件
+      </h1>
+      <h1>
+        难难啊难,这里面放置组件
+      </h1>
+      <h1>
+        难难啊难,这里面放置组件
+      </h1>
+      <h1>
+        难难啊难,这里面放置组件
+      </h1>
+      <h1>
+        难难啊难,这里面放置组件
+      </h1>
+      <h1>
+        难难啊难,这里面放置组件
+      </h1>
+      <h1>
+        难难啊难,这里面放置组件
+      </h1>
+      <h1>
+        难难啊难,这里面放置组件
+      </h1>
+      <h1>
+        难难啊难,这里面放置组件
+      </h1>
     </CollectionItem>
   </div>
 </template>
@@ -22,10 +51,6 @@ const gridRowCount = computed(() => {
   grid-template-columns: repeat(3, 1fr);
   min-height: 40vh;
   grid-template-rows: repeat(v-bind(gridRowCount), 1fr);
-}
-
-.collection-item {
-  height: 28vh;
 }
 </style>
 
