@@ -63,14 +63,16 @@ defineProps<{
   }
 
   .main {
-    background-color: #ccc;
+    background-color: rgb(235, 235, 235);
   }
 }
 
 .footer {
-  height: 30px;
+  height: 24px;
 
   .copyright {
+    line-height: 24px;
+    font-size: 14px;
     display: flex;
     height: 100%;
     align-items: center;

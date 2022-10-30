@@ -3,32 +3,39 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   // text-align: center;
+  display: flex;
   color: #2c3e50;
   list-style: none;
   height: 100vh;
   overflow: hidden;
 }
 
-html,body{
+html,
+body {
   margin: 0;
-  ul{
+
+  ul {
     padding: 0;
-    li{
+
+    li {
       list-style: none;
     }
   }
 }
+
 // 控制全局滚动栏样式
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 10px;
-  background-color: #686a6b;
-  // border-left: #3f3f3f 1px solid;
-}
-::-webkit-scrollbar-thumb{
   border-radius: 5px;
-  background-color: #b1b1b1;
+  background-color: #d4d4d4;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background-color: #656565;
   width: 10px;
 }
-::-webkit-scrollbar-button{
+
+::-webkit-scrollbar-button {
   display: none;
 }
