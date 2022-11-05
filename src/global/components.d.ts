@@ -5,8 +5,6 @@
 declare module 'vue' {
   export interface GlobalComponents {
     _collection: typeof import('./../components/_collection/index.vue')['default']
-    CelebrateButton: typeof import('./../components/animation/CelebrateButton.vue')['default']
-    CelebrateConfetti: typeof import('./../components/animation/CelebrateConfetti.vue')['default']
     CollectionItem: typeof import('./../components/_collection/CollectionItem.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
@@ -22,6 +20,7 @@ declare module 'vue' {
     ElResult: typeof import('element-plus/es')['ElResult']
     ElRow: typeof import('element-plus/es')['ElRow']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
+    InfinityScroll: typeof import('./../components/animation/InfinityScroll.vue')['default']
     MultiContent: typeof import('./../components/animation/MultiContent.vue')['default']
   }
 }
