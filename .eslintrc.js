@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true
   },
-  // 如果不想使用 ts 的类型检查可以启用 globals，选择忽略一些全局定义的变量
+  // ts 会使用类型检查，检查未使用的变量，如果不想使用 ts 的类型检查，可以启用 globals，选择忽略一些全局定义的变量
   // 定义 vue 自动引入的全局变量，防止 eslint 报错
   // globals: {
   //   defineProps: true,
