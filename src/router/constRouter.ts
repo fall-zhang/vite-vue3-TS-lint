@@ -3,7 +3,6 @@ import { BlankLayout } from '../layout'
 // import { BlankLayout } from '../layout'
 import { isDevelopment } from '@/config'
 import ErrorPage404 from '@/pages/404.vue'
-import ComponentCollection from '@C/_collection/index.vue'
 const constRouters: RouteRecordRaw[] = [
   {
     path: '/redirect',
@@ -17,17 +16,14 @@ const constRouters: RouteRecordRaw[] = [
     ]
   }, {
     path: '/home',
-    component: BlankLayout,
-    children: [
-      {
-        path: '/redirect/:path*',
-        component: () => import('@P/LayoutPage1/index.vue'),
-        meta: {}
-      }
-    ]
-  }, {
-    path: '/',
-    redirect: '/components',
+    component: () => import('@P/home.vue'),
+    // children: [
+    //   {
+    //     path: '/redirect/:path*',
+    //     component: BlankLayout,
+    //     meta: {}
+    //   }
+    // ]
   }, {
     path: '/components',
     component: isDevelopment ? () => import('@C/_collection/index.vue') : ErrorPage404,
@@ -40,10 +36,8 @@ const constRouters: RouteRecordRaw[] = [
       }
     ]
   }, {
-    path: '/*',
-    component: ComponentCollection,
-    name: '',
-    redirect: '/components',
+    path: '/',
+    redirect: '/home',
     children: [
       {
         path: '/redirect/:path*',
@@ -51,6 +45,7 @@ const constRouters: RouteRecordRaw[] = [
         meta: {}
       }
     ]
-  }
+  },
+
 ]
 export default constRouters
