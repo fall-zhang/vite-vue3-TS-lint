@@ -22,5 +22,5 @@ watch(route, (newVal) => {
 </template>
 
 <style lang="scss">
-@import './styles/Basic.scss';
+@import '@A/styles/Basic.scss';
 </style>

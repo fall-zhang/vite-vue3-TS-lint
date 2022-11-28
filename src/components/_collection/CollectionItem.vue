@@ -4,28 +4,25 @@
       <div class="card-header">
         <span>{{ title }}</span>
         <el-button link @click="emit('onDetail')">
-详情
-</el-button>
+          详情
+        </el-button>
       </div>
     </template>
-    <div class="card-content">
-      <slot></slot>
+    <div class="card-body">
+      <div class="card-content">
+        <slot></slot>
+      </div>
+      <ul class="card-foot">
+        <li v-for="(key, value) in arguments" :key="key">
+          {{ value }}：<span v-if="key" class="red">必填</span>
+          <span v-else class="gray">选填</span>
+        </li>
+      </ul>
     </div>
-    <template #footer>
-      点击冲冲冲
-    </template>
-    <ul class="card-foot">
-      <!-- {{ arguments }} -->
-      <li v-for="(value,key) in arguments" :key="key">
-        {{ key }}：<span v-if="value.required" class="red">必填</span>
-        <span v-else class="gray">选填</span>
-      </li>
-    </ul>
   </el-card>
 </template>
 
 <script setup lang="ts">
-// const props = 
 defineProps<{
   title?: string,
   arguments: Record<string, any>

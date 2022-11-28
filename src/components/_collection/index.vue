@@ -22,7 +22,7 @@ const gridRowCount = computed(() => {
 
 <template>
   <div class="collection">
-    <CollectionItem v-for="(part,index) in buil" :title="part.default.__name" :key="index"
+    <CollectionItem v-for="(part, index) in buil" :title="part.default.__name" :key="index"
       :arguments="part.default.props">
       <Component :is="part.default" :count="99"></Component>
     </CollectionItem>
@@ -35,10 +35,6 @@ const gridRowCount = computed(() => {
   grid-template-columns: repeat(4, 1fr);
   min-height: 40vh;
   grid-template-rows: repeat(v-bind(gridRowCount), 1fr);
-}
-
-.collection-item {
-  height: 28vh;
 }
 </style>
 

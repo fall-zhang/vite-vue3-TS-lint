@@ -7,3 +7,4 @@ import Router from '@/router'
 const app = createApp(App)
 app.use(Router)
 app.mount('#app')
+// app.use(ElementPlus, { size: 'small', zIndex: 3000 })

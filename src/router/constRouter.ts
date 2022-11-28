@@ -1,6 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { BlankLayout } from '../layout'
 // import { BlankLayout } from '../layout'
+import { defineAsyncComponent as asyncImport } from 'vue'
 import { isDevelopment } from '@/config'
 import ErrorPage404 from '@/pages/404.vue'
 const constRouters: RouteRecordRaw[] = [
