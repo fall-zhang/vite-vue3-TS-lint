@@ -1,7 +1,7 @@
 {
   "name": "vite-vue-template",
   "private": true,
-  "version": "0.0.5",
+  "version": "0.0.6",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -23,7 +23,7 @@
     "element-plus": "^2.1.8",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "5",
+    "eslint-plugin-promise": "^5.2.0",
     "sass": "^1.54.0",
     "tailwind": "^4.0.0",
     "vue": "^3.2.37",
@@ -58,5 +58,17 @@
     "commitizen": {
       "path": "./node_modules/cz-customizable"
     }
+  },
+  "author": {
+    "name": "Fall Zhang",
+    "email": "a90172451@gmail.com",
+    "url": "https://github.com/Fall-zhang"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Fall-zhang/vite-vue3-TS-lint"
   }
 }
