@@ -3,9 +3,9 @@
 ## 起步
 
 - 克隆当前包到本地
-- `yarn` 安装所需依赖
-- `yarn prepare` 准备 husky 相关的内容
-- 使用 `yarn commit` 进行提交代码
+- `pnpm` 安装所需依赖
+- `pnpm prepare` 准备 husky 相关的内容
+- 使用 `pnpm commit` 进行提交代码
 
 ## 特性
 
@@ -21,7 +21,7 @@
 
 - 所有包，都通过大写进行引入，例如：`MyButton.vue`
 - 使用 ESlint 代码规范（如果是 vscode 建议在配置中打开 eslint 的代码格式化功能，作为代码格式化工具）
-- 所有的包，名称都是 MyButton，使用大写字母
+- 所有 Vue 文件，使用大驼峰方式命名，例如：MyButton
 
 ## 施工中
 
