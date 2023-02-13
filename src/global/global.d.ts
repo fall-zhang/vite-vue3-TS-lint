@@ -1,1 +1,5 @@
-declare module 'mitt'
+
+declare module 'mitt'{
+
+  export = HTMLElement
+}

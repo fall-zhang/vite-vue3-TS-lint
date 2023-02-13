@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import Router from '@/router'
+import '@/assets/styles/global.scss'
 // import ElementPlus from 'element-plus'
 // console.log(import.meta.env)
 

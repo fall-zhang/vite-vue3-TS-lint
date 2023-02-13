@@ -17,6 +17,15 @@ export default defineConfig({
       '@P': pathResolve(__dirname, 'src/pages')
     }
   },
+  server: {
+    proxy: {
+      '^/api/.*': {
+        target: 'https://yourserver.com/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
+    }
+  },
   plugins: [
     vue(),
     AutoImport({
