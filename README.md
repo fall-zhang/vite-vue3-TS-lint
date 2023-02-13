@@ -21,7 +21,7 @@
 
 - 所有包，都通过大写进行引入，例如：`MyButton.vue`
 - 使用 ESlint 代码规范（建议在 vscode 配置中使用 eslint 插件作为代码格式化工具）
-- 所有的包，名称都是 MyButton，使用大写字母
+- 所有 Vue 文件，使用大驼峰方式命名，例如：MyButton
 
 ## 施工中
 
