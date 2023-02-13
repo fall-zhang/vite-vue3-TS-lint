@@ -13,7 +13,7 @@ module.exports = {
   //   reactive: true
   // },
   // 后面的配置会覆盖前者
-  extends: ['standard', 'prettier', 'plugin:vue/vue3-strongly-recommended'],
+  extends: ['standard', 'plugin:vue/vue3-strongly-recommended'],
   parserOptions: {
     ecmaVersion: 'latest',
     parser: '@typescript-eslint/parser',
