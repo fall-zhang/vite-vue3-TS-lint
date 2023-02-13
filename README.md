@@ -3,9 +3,9 @@
 ## 起步
 
 - 克隆当前包到本地
-- `yarn` 安装所需依赖
-- `yarn prepare` 准备 husky 相关的内容
-- 使用 `yarn commit` 进行提交代码
+- `pnpm i` 安装所需依赖
+- `pnpm prepare` 准备 husky 相关的内容
+- 使用 `pnpm commit` 进行提交代码
 
 ## 特性
 

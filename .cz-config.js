@@ -1,19 +1,19 @@
 'use strict'
 module.exports = {
   types: [
-    { value: '👾issue', name: '修复:    issue 有专门的代号' }, // 此项特别针对bug号，用于向测试反馈bug列表的bug修改情况
     { value: '✨新增', name: '新增:    新的内容' },
-    { value: '🐛修复', name: '修复:    修复一个Bug' },
+    { value: '👾问题', name: '修复:    issue 有专门的代号' }, // 此项特别针对bug号，用于向测试反馈bug列表的bug修改情况
+    { value: '🐛修复', name: '修复:    修复一个 Bug' },
     { value: '📝文档', name: '文档:    变更的只有文档' },
-    { value: '💄格式', name: '格式:    空格, 分号等格式修复' },
-    { value: '♻️重构', name: '重构:    代码重构，注意和特性、修复区分开' },
-    { value: '⚡️性能', name: '性能:    提升性能' },
+    { value: '💄格式', name: '格式:    空格，分号等格式修复' },
+    { value: '♻️重构', name: '重构:    代码重构，对代码结构进行调整' },
+    { value: '⚡️性能', name: '性能:    提升性能，算法或者事件优化' },
     { value: '✅测试', name: '测试:    添加一个测试' },
     { value: '🔧工具', name: '工具:    开发工具变动(构建、脚手架工具等)' },
     { value: '⏪回滚', name: '回滚:    代码回退' }
   ],
   scopes: [
-    { name: 'javascript' },
+    // { name: 'javascript' },
     { name: 'typescript' },
     { name: 'Vue' },
     { name: 'markdown' }
@@ -24,6 +24,7 @@ module.exports = {
     scope: '选择一个scope (可选):',
     // used if allowCustomScopes is true
     customScope: 'Denote the SCOPE of this change:',
+    // customScope: '提交这次更改中的以下代码:',
     subject: '短说明:\n',
     body: '长说明，使用"|"换行(可选):\n',
     breaking: '非兼容性说明 (可选):\n',
