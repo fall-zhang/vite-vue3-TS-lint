@@ -21,7 +21,8 @@ module.exports = {
   },
   plugins: ['vue', '@typescript-eslint'],
   rules: {
-    'no-undef': 0, // 使用未命名变量的检查交给 ts 类型检查器
+    'no-undef': 0, // 未命名变量不报错：当未命名变量的检查交给 ts 类型检查器时使用
+    'space-before-function-paren': 0, // function 前面的空格
     // 'no-unused-vars': 0, // 未命名变量检查交给 ts
     'vue/first-attribute-linebreak': 0,
     'vue/html-closing-bracket-newline': 0,
@@ -45,6 +46,7 @@ module.exports = {
     ],
     semi: [2, 'never'],
     'no-irregular-whitespace': 2,
+    'eol-last': 0, // 所有文件结尾必须包括换行
     '@typescript-eslint/no-explicit-any': 1
   }
 }
