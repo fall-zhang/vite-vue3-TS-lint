@@ -24,6 +24,7 @@ module.exports = {
     'no-undef': 0, // 未命名变量不报错：当未命名变量的检查交给 ts 类型检查器时使用
     'space-before-function-paren': 0, // function 前面的空格
     // 'no-unused-vars': 0, // 未命名变量检查交给 ts
+    'vue/multiline-html-element-content-newline': 0,
     'vue/first-attribute-linebreak': 0,
     'vue/html-closing-bracket-newline': 0,
     'vue/html-indent': 0,
