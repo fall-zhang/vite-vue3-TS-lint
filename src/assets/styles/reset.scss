@@ -1,0 +1,42 @@
+/**
+  注：该文件将仅用于重置浏览器默认样式，不会覆盖其他任何组件库，或者自定义样式
+*/
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #337ecc;
+}
+
+.green {
+  text-decoration: none;
+  color: hsla(160, 100%, 37%, 1);
+  transition: 0.4s;
+}
+
+body {
+  margin: 0;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  line-height: 1.5;
+  max-height: 100vh;
+}
