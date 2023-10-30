@@ -1,20 +1,20 @@
 <template>
   <el-dialog v-model:visible="drawerShow" width="480px" :title="title" ref="drawer"
-direction="rtl"
-v-dialogDrag @opened="onOpened">
+direction="rtl" v-dialogDrag
+    @opened="onOpened">
     <div class="drawer-content">
-      <el-form label-width="80px" ref="lightForm" label-position="right" :model="model" size="mini">
+      <el-form label-width="80px" ref="lightForm" label-position="right" :model="model" size="small">
         <div class="form-content">
           <slot></slot>
         </div>
       </el-form>
       <div class="drawer-footer">
         <el-button class="cancel-button" size="small" @click="cancelSubmit">
-取消
-</el-button>
+          取消
+        </el-button>
         <el-button type="primary" size="small" @click="submitFrom">
-确认
-</el-button>
+          确认
+        </el-button>
       </div>
     </div>
   </el-dialog>
@@ -49,7 +49,8 @@ export default {
   data() {
     return {
       drawerShow: false,
-      submitLoading: false
+      submitLoading: false,
+      versionId: ''
     }
   },
   watch: {
@@ -80,7 +81,10 @@ export default {
       }
     },
     onOpened() {
-      this.$refs.lightForm.resetFields()
+      if (this.$refs.lightForm) {
+        this.$refs.lightForm.resetFields()
+      }
+      this.$refs.lightForm?.resetFields()
     },
     cancelSubmit() {
       this.$emit('cancel')
@@ -128,5 +132,4 @@ export default {
     margin: 0 0 12px 30px;
   }
 }
-
 </style>
