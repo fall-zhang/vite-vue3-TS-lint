@@ -30,7 +30,6 @@
     "@vitejs/plugin-vue": "^4.4.0",
     "commitizen": "^4.3.0",
     "commitlint-config-cz": "^0.13.3",
-    "cz-customizable": "^7.0.0",
     "eslint": "^8.52.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-vue": "^8.7.1",
@@ -45,11 +44,6 @@
   },
   "commitlint": {
     "extends": "cz"
-  },
-  "config": {
-    "commitizen": {
-      "path": "cz-customizable"
-    }
   },
   "author": {
     "name": "Fall Zhang",
