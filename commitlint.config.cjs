@@ -7,7 +7,7 @@ const scopes = fs
   .readdirSync(path.resolve(__dirname, 'src'), { withFileTypes: true })
   .filter(dirent => dirent.isDirectory())
   .map(dirent => dirent.name.replace(/s$/, '')).concat(
-    'markdown'
+    'markdown', 'global'
   )
 
 /** @type {import('cz-git').UserConfig} */
