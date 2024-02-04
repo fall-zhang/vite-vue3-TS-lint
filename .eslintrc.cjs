@@ -53,13 +53,7 @@ module.exports = {
     'vue/html-indent': 0,
     'vue/no-multiple-template-root': 0,
     'vue/html-self-closing': 0,
-    'vue/max-attributes-per-line': [
-      1,
-      {
-        singleline: 5,
-        multiline: 4
-      }
-    ],
+    'vue/max-attributes-per-line': 0,
     // ts 错误处理
     '@typescript-eslint/no-explicit-any': 1
   }
