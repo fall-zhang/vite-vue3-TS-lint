@@ -10,6 +10,7 @@ declare module 'vue' {
     _collection: typeof import('./../components/_collection/index.vue')['default']
     CollectionItem: typeof import('./../components/_collection/CollectionItem.vue')['default']
     Dialog: typeof import('./../components/more-layer/dialog/index.vue')['default']
+    DialogFormContainer: typeof import('./../components/more-layer/DialogFormContainer.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElCard: typeof import('element-plus/es')['ElCard']

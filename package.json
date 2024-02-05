@@ -21,7 +21,7 @@
     "axios": "^1.6.7",
     "element-plus": "^2.5.5",
     "vue": "^3.4.15",
-    "vue-fantable": "^0.1.9",
+    "vue-fantable": "^0.2.1",
     "vue-router": "^4.2.5"
   },
   "devDependencies": {
@@ -30,6 +30,7 @@
     "@typescript-eslint/eslint-plugin": "^5.62.0",
     "@typescript-eslint/parser": "^5.62.0",
     "@vitejs/plugin-vue": "^4.6.2",
+    "@vitejs/plugin-vue-jsx": "^3.1.0",
     "cz-git": "^1.8.0",
     "czg": "^1.8.0",
     "eslint": "^8.56.0",
