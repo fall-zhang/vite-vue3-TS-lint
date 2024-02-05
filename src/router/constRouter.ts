@@ -2,7 +2,7 @@ import type { RouteRecordRaw } from 'vue-router'
 import { BlankLayout } from '../layout'
 // import { BlankLayout } from '../layout'
 import { isDevelopment } from '@/config'
-import ErrorPage404 from '@/pages/404.vue'
+import ErrorPage404 from '@/pages/error-pages/404.vue'
 const constRouters: RouteRecordRaw[] = [
   {
     path: '/redirect',
@@ -10,34 +10,31 @@ const constRouters: RouteRecordRaw[] = [
     children: [
       {
         path: '/redirect/:path*',
-        component: () => import('@P/LayoutPage1/index.vue'),
+        component: () => import('@P/error-pages/404.vue'),
         meta: {}
       }
     ]
-  }, {
+  },
+  {
     path: '/home',
     component: () => import('@P/home.vue'),
     meta: { pageTitle: '首页' },
-  }, {
-    path: '/components',
-    component: isDevelopment ? () => import('@C/_collection/index.vue') : ErrorPage404,
-    meta: { pageTitle: '模块查看系统' },
+  },
+  {
+    path: '/example',
+    component: BlankLayout,
+    meta: { pageTitle: '首页' },
     children: [
       {
-        path: '/redirect/:path*',
-        component: () => import('@P/LayoutPage1/index.vue'),
-        meta: { pageTitle: '模块查看系统' }
+        path: '/example/fantable',
+        component: () => import('@/example/SpreadSheet.vue'),
       }
     ]
-  }, {
+  },
+  {
     path: '/',
     redirect: '/home',
     children: [
-      {
-        path: '/redirect/:path*',
-        component: () => import('@P/LayoutPage1/index.vue'),
-        meta: {}
-      }
     ]
   },
 ]

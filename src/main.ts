@@ -1,28 +1,16 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import Router from '@/router'
-import '@/assets/styles/global.scss'
+import '@/assets/styles/main.scss'
+import VeTable, { VeLocale } from 'vue-fantable'
+import 'vue-fantable/libs/theme-default.css'
+import zh from 'vue-fantable/libs/lang/zh-CN'
+// import immer from 'immer'
 // import ElementPlus from 'element-plus'
 // console.log(import.meta.env)
 
 const app = createApp(App)
 app.use(Router)
+VeLocale.use(zh)
+app.use(VeTable)
 app.mount('#app')
-// app.use(ElementPlus, { size: 'small', zIndex: 3000 })
-
-type User = {
-  id: number;
-  kind: string;
-};
-
-function makeCustomer<T extends User>(u: T, j: T): T {
-  // Error（TS 编译器版本：v4.4.2）
-  // Type '{ id: number; kind: string; }' is not assignable to type 'T'.
-  // '{ id: number; kind: string; }' is assignable to the constraint of type 'T', 
-  // but 'T' could be instantiated with a different subtype of constraint 'User'.
-  return {
-    ...u,
-    id: u.id,
-    kind: 'customer'
-  }
-}
