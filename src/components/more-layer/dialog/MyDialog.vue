@@ -39,6 +39,7 @@ export default {
   props: {
     modelValue: {
       require: true,
+      type: Boolean,
       default: false
     },
     title: {
@@ -49,13 +50,13 @@ export default {
     size: {
       require: true,
       type: String,
-      default: "medium",
+      default: 'medium',
       validator(size) {
-        return ["small", "medium", "large"].includes(size)
+        return ['small', 'medium', 'large'].includes(size)
       }
     }
   },
-  emits: ["update:modelValue", 'confirm', 'cancel', 'largeSize', 'miniSize'],
+  emits: ['update:modelValue', 'confirm', 'cancel', 'largeSize', 'miniSize'],
   data() {
     return {
       forceLarge: true
