@@ -41,6 +41,7 @@ declare module 'vue' {
     InfinityScroll: typeof import('./../components/data-display/InfinityScroll.vue')['default']
     LayoutCard: typeof import('./../components/card/LayoutCard.vue')['default']
     LightDialog: typeof import('./../components/more-layer/LightDialog.vue')['default']
+    LightFormDialog: typeof import('./../components/more-layer/LightFormDialog.vue')['default']
     Menu: typeof import('./../components/navigation/menu/index.vue')['default']
     MultiContent: typeof import('./../components/animation/MultiContent.vue')['default']
     MyDialog: typeof import('./../components/more-layer/dialog/MyDialog.vue')['default']
