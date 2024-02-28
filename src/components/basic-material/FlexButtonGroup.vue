@@ -7,13 +7,14 @@
 
 <script lang="ts" setup>
 defineProps<{
-  option?: Record<'key' | 'value' | 'label', any>[]
+  option?: Record<'value' | 'label', any>[]
 }>()
 const activeLabel = ref('')
 </script>
 
 <style lang="scss" scoped>
 .option-select {
+  list-style: none;
   display: flex;
   margin: 5px 8px 4px;
   gap: 4px;

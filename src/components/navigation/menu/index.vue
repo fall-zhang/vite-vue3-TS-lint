@@ -9,8 +9,8 @@
   </el-menu>
 </template>
 
-<script>
-import pageRoutes from '@/router/pageRoutes.js'
+<script lang="ts">
+import pageRoutes from '@/router/constRouter'
 export default {
   name: 'MainMenu',
   components: {
@@ -38,7 +38,7 @@ export default {
     onSelectMenu(path) {
       console.log(this.$route.path)
       if (this.$route.path !== path) {
-        this.$router.push({ path: path })
+        this.$router.push({ path })
       }
     }
   }
