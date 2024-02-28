@@ -84,7 +84,7 @@ module.exports = {
       // { value: 'wip', name: 'wip:      🕔  work in process', emoji: '🕔' },
       // { value: 'workflow', name: 'workflow: 📋  workflow improvements', emoji: '📋' },
       // { value: 'type', name: 'type:     🔰  type definition file changes', emoji: '🔰' }
-      // 中文版
+      // 中文版 👾/📝
       { value: 'feat', name: '特性:   🚀  新增功能', emoji: '🚀' },
       { value: 'fix', name: '修复:   🐛  修复一个 Bug', emoji: '🐛' },
       { value: 'docs', name: '文档:   📚  文档变更', emoji: '📚' },
@@ -98,9 +98,8 @@ module.exports = {
       { value: 'chore', name: '其他:   🔰  对构建过程或辅助工具和库的更改（不影响源文件、测试用例）', emoji: '🔰' },
       // { value: 'ci', name: '集成:   🎡  修改 CI 配置、脚本', emoji: '🎡' },
       // { value: 'wip', name: '开发:   🕔  正在开发中', emoji: '🕔' },
-      // { value: 'workflow', name: '工作流:   📋  工作流程改进', emoji: '📋' },
+      { value: 'workflow', name: '工作流:   📋  工作流程改进', emoji: '📋' },
       // { value: 'types', name: '类型:   💄  类型文件修改', emoji: '💄' }
-      //  👾/📝
     ],
     useEmoji: true,
     scopes: [...scopes],
