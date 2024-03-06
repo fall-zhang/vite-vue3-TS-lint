@@ -2,9 +2,9 @@
   "description": "该文件用于所有 example 的注册",
   "route": [
     {
-      "path": "/example/fantable",
+      "path": "/fantable",
       "name": "SpreadSheet",
-      "component": "example/SpreadSheet",
+      "component": "/SpreadSheet",
       "meta": {
         "menuName": "excel 表格",
         "icon": "table",

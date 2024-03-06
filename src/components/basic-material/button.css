@@ -7,24 +7,61 @@
   display: inline-block;
   line-height: 1;
 }
+
 .storybook-button--primary {
   color: white;
   background-color: #1ea7fd;
 }
+
 .storybook-button--secondary {
   color: #333;
   background-color: transparent;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
 }
+
 .storybook-button--small {
   font-size: 12px;
   padding: 10px 16px;
 }
+
 .storybook-button--medium {
   font-size: 14px;
   padding: 11px 20px;
 }
+
 .storybook-button--large {
   font-size: 16px;
   padding: 12px 24px;
+}
+
+.button-demo {
+  color: #fff;
+  background-color: #409eff;
+  display: inline-block;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid #409eff;
+  text-align: center;
+  box-sizing: border-box;
+  outline: none;
+  margin: 0;
+  transition: 0.1s;
+  font-weight: 500;
+  user-select: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 3px;
+
+  &:hover {
+    background: #66b1ff;
+    border-color: #66b1ff;
+    color: #fff;
+  }
+
+  &:active {
+    background: #409eff;
+    border-color: #409eff;
+    color: #fff;
+  }
 }
