@@ -67,6 +67,7 @@ declare module 'vue' {
     QuarterSector: typeof import('./../components/icons/QuarterSector.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    RulerContainer: typeof import('./../components/data-display/RulerContainer.vue')['default']
     SpecialCoppt: typeof import('./../components/form/Input/SpecialCoppt.vue')['default']
     SpicalInput: typeof import('./../components/form/Input/SpicalInput.vue')['default']
     SpreadSheet: typeof import('./../components/table/SpreadSheet.vue')['default']
