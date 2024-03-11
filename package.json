@@ -13,6 +13,7 @@
     "lint": "eslint --fix",
     "commit": "czg",
     "storybook": "storybook dev -p 6006",
+    "story": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "lint-staged": {
