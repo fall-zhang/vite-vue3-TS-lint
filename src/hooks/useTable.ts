@@ -1,17 +1,17 @@
-import { Table } from './interface'
+import { Table } from './types/Table'
 import { reactive, computed, toRefs } from 'vue'
 
 /**
  * @description table 页面操作方法封装
  * @param {Function} api 获取表格数据 api 方法 (必传)
  * @param {Object} initParam 获取数据初始化参数 (非必传，默认为{})
- * @param {Boolean} isPageable 是否有分页 (非必传，默认为true)
+ * @param {Boolean} hasPagination 是否有分页 (非必传，默认为true)
  * @param {Function} dataCallBack 对后台返回的数据进行处理的方法 (非必传)
  * */
 export const useTable = (
   api?: (params: any) => Promise<any>,
   initParam: object = {},
-  isPageable: boolean = true,
+  hasPagination: boolean = true,
   dataCallBack?: (data: any) => any,
   requestError?: (error: any) => void
 ) => {
@@ -19,7 +19,7 @@ export const useTable = (
     // 表格数据
     tableData: [],
     // 分页数据
-    pageable: {
+    pagination: {
       // 当前页数
       pageNum: 1,
       // 每页显示条数
@@ -41,8 +41,8 @@ export const useTable = (
   const pageParam = computed({
     get: () => {
       return {
-        pageNum: state.pageable.pageNum,
-        pageSize: state.pageable.pageSize
+        pageNum: state.pagination.pageNum,
+        pageSize: state.pagination.pageSize
       }
     },
     set: (newVal: any) => {
@@ -58,14 +58,14 @@ export const useTable = (
     if (!api) return
     try {
       // 先把初始化参数和分页参数放到总参数里面
-      Object.assign(state.totalParam, initParam, isPageable ? pageParam.value : {})
+      Object.assign(state.totalParam, initParam, hasPagination ? pageParam.value : {})
       let { data } = await api({ ...state.searchInitParam, ...state.totalParam })
       dataCallBack && (data = dataCallBack(data))
-      state.tableData = isPageable ? data.list : data
+      state.tableData = hasPagination ? data.list : data
       // 解构后台返回的分页数据 (如果有分页更新分页信息)
-      if (isPageable) {
+      if (hasPagination) {
         const { pageNum, pageSize, total } = data
-        updatePageable({ pageNum, pageSize, total })
+        updatePagination({ pageNum, pageSize, total })
       }
     } catch (error) {
       requestError && requestError(error)
@@ -87,16 +87,16 @@ export const useTable = (
         nowSearchParam[key] = state.searchParam[key]
       }
     }
-    Object.assign(state.totalParam, nowSearchParam, isPageable ? pageParam.value : {})
+    Object.assign(state.totalParam, nowSearchParam, hasPagination ? pageParam.value : {})
   }
 
   /**
    * @description 更新分页信息
-   * @param {Object} pageable 后台返回的分页数据
+   * @param {Object} pagination 后台返回的分页数据
    * @return void
    * */
-  const updatePageable = (pageable: Table.Pageable) => {
-    Object.assign(state.pageable, pageable)
+  const updatePagination = (pagination: Table.Pagination) => {
+    Object.assign(state.pagination, pagination)
   }
 
   /**
@@ -104,7 +104,7 @@ export const useTable = (
    * @return void
    * */
   const search = () => {
-    state.pageable.pageNum = 1
+    state.pagination.pageNum = 1
     updatedTotalParam()
     getTableList()
   }
@@ -114,7 +114,7 @@ export const useTable = (
    * @return void
    * */
   const reset = () => {
-    state.pageable.pageNum = 1
+    state.pagination.pageNum = 1
     // 重置搜索表单的时，如果有默认搜索参数，则重置默认的搜索参数
     state.searchParam = { ...state.searchInitParam }
     updatedTotalParam()
@@ -127,8 +127,8 @@ export const useTable = (
    * @return void
    * */
   const handleSizeChange = (val: number) => {
-    state.pageable.pageNum = 1
-    state.pageable.pageSize = val
+    state.pagination.pageNum = 1
+    state.pagination.pageSize = val
     getTableList()
   }
 
@@ -138,7 +138,7 @@ export const useTable = (
    * @return void
    * */
   const handleCurrentChange = (val: number) => {
-    state.pageable.pageNum = val
+    state.pagination.pageNum = val
     getTableList()
   }
 

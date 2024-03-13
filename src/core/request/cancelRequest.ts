@@ -12,6 +12,11 @@ const pendingMap = new Map<string, AbortController>()
 export const getPendingUrl = (config: CustomAxiosRequestConfig) =>
   [config.method, config.url, qs.stringify(config.data), qs.stringify(config.params)].join('&')
 
+// export const getPendingUrl = (config: CustomAxiosRequestConfig) => {
+//   const qs = new URLSearchParams(config.data)
+//   return [config.method, config.url, qs.toString(config.data), qs.stringify(config.params)].join('&')
+// }
+
 export class AxiosCanceler {
   /**
    * @description: 添加请求

@@ -17,12 +17,17 @@ export default function (fun: fun, args: any, time: number = 200) {
   }
 }
 
-export function throttle(fn: fun, delay: number) {
+export function throttle(fn: fun, delay: number, immediate: boolean) {
   let flag = true
+  let immediateRender = immediate
   // let timer: NodeJS.Timeout = 0
   return () => {
     if (!flag) return
     flag = false
+    if (immediateRender) {
+      fn()
+      immediateRender = false
+    }
     setTimeout(() => {
       fn()
       flag = true
