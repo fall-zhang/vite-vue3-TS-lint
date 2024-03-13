@@ -1,38 +1,48 @@
 import type { RouteRecordRaw } from 'vue-router'
 import { BlankLayout } from '../layout'
 
-const constRouters: RouteRecordRaw[] = [
-  {
-    path: '/redirect',
-    component: BlankLayout,
-    children: [
-      {
-        path: '/redirect/:path*',
-        component: () => import('@P/error-pages/404.vue'),
-        meta: {}
+const exampleComponents = import.meta.glob('@/example/*.vue')
+console.log('🚀 ~ exampleComponents:', exampleComponents)
+// function getFileName(fileList: Record<string, any>) {
+//   const result = Object.keys(fileList).map(filePath => {
+//     const fileName = filePath.split('/').at(-1)
+//     return fileName
+//   })
+//   return result
+// }
+function getFileName(fileName: string) {
+  return fileName.split('/').at(-1)
+}
+// console.log("🚀 ~ fileNameList:", fileNameList)
+function genRoutes(fileList: Record<string, any>) {
+  const result = Object.keys(fileList).map(filePath => {
+    const fileName = getFileName(filePath)
+    const filePrefix = fileName?.slice(0, -4)
+    return {
+      path: '/example/' + filePrefix,
+      name: filePrefix,
+      component: fileList[filePath],
+      meta: {
+
       }
-    ]
-  },
-  {
-    path: '/home',
-    component: () => import('@P/home.vue'),
-    meta: { pageTitle: '首页' },
-  },
+    }
+  })
+  return result
+}
+export const exampleRoutes = genRoutes(exampleComponents)
+// console.log("🚀 ~ exampleRoutes:", exampleRoutes)
+const constRouters: RouteRecordRaw[] = [
   {
     path: '/example',
     component: BlankLayout,
-    meta: { pageTitle: '首页' },
     children: [
+      ...exampleRoutes,
       {
-        path: '/example/fantable',
-        component: () => import('@/example/SpreadSheet.vue'),
+        path: '/example/:others',
+        // component: () => import('@/pages/error-pages/404.vue'),
+        redirect: exampleRoutes[0].path,
+        meta: {}
       }
-    ]
-  },
-  {
-    path: '/',
-    redirect: '/home',
-    children: [
     ]
   },
 ]
