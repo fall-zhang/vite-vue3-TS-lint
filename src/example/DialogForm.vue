@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { deepClone } from '@/utils/common'
+import { deepClone } from '@/utils'
 const planFormRules = {
   // xmmc: [
   //   { required: true, trigger: 'change', message: '请输入项目名称' }
@@ -187,13 +187,11 @@ export default {
   }
 }
 
-::v-deep {
-  .el-form-item {
-    margin: 0 0 12px 30px;
-  }
+:deep(.el-form-item) {
+  margin: 0 0 12px 30px;
 }
 
-::v-deep .el-dialog__header {
+:deep(.el-dialog__header) {
   background-color: #0d867f;
   padding: 10px;
   color: white;
