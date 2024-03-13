@@ -19,8 +19,12 @@ watch(route, (newVal) => {
 
 <template>
   <el-config-provider :locale="language">
-    <PageLayout :title="title" no-side>
-      <router-view></router-view>
+    <PageLayout :title="title" :no-side="!$route.fullPath.includes('example')">
+      <router-view #="{ Component }">
+        <KeepAlive>
+          <component :is="Component"></component>
+        </KeepAlive>
+      </router-view>
     </PageLayout>
   </el-config-provider>
 </template>

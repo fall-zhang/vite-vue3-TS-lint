@@ -9,7 +9,7 @@
       </slot>
     </el-header>
     <el-container class="container">
-      <el-aside class="aside" v-if="!noSide">
+      <el-aside v-if="!noSide" class="aside">
         <slot name="aside">
           <SideMenu></SideMenu>
         </slot>
@@ -35,7 +35,7 @@ import SideMenu from '@/layout/SideMenu.vue'
 defineProps<{
   title?: string,
   noSide?: boolean,
-  nohead?: boolean,
+  noHead?: boolean,
 }>()
 // const height = '200px'
 </script>
@@ -60,6 +60,8 @@ defineProps<{
   // background-color: aqua;
   .aside {
     background-color: #bbb;
+    min-width: 180px;
+    max-width: 240px;
   }
 
   .main {
