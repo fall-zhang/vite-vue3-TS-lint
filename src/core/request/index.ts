@@ -1,9 +1,9 @@
 import axios, { AxiosInstance, AxiosError, AxiosRequestConfig, InternalAxiosRequestConfig, AxiosResponse } from 'axios'
 // import { showFullScreenLoading, tryHideFullScreenLoading } from '@/components/Loading/fullScreen'
-import { ROUTE_LOGIN } from '@/config'
+import { ROUTE_LOGIN, TIME_OUT } from '@/config'
 import { ElMessage } from 'element-plus'
 
-import { ResultCode, ResultData } from './request.d'
+import { ResponseCode, ResponseData } from './request.d'
 import { AxiosCanceler } from './cancelRequest'
 import { useUserInfo } from '@/core/user'
 import { useRouter } from 'vue-router'
@@ -17,7 +17,7 @@ const config = {
   // 默认地址请求地址，可在 .env.** 文件中修改
   baseURL: import.meta.env.VITE_API_URL as string,
   // 设置超时时间
-  timeout: 60000,
+  timeout: TIME_OUT,
   // 跨域时候允许携带凭证
   withCredentials: true
 }
@@ -66,14 +66,14 @@ class RequestHttp {
         axiosCanceler.removePending(config)
         // tryHideFullScreenLoading()
         // 登录失效
-        if (data.code === ResultCode.OVERDUE) {
+        if (data.code === ResponseCode.OVERDUE) {
           userStore.setToken('')
           router.replace(ROUTE_LOGIN)
           ElMessage.error(data.msg)
           return Promise.reject(data)
         }
         // 全局错误信息拦截（防止下载文件的时候返回数据流，没有 code 直接报错）
-        if (data.code && data.code !== ResultCode.SUCCESS) {
+        if (data.code && data.code !== ResponseCode.SUCCESS) {
           ElMessage.error(data.msg)
           return Promise.reject(data)
         }
@@ -99,11 +99,11 @@ class RequestHttp {
   /**
    * @description 常用请求方法封装
    */
-  get<T>(url: string, params?: object, _object = {}): Promise<ResultData<T>> {
+  get<T>(url: string, params?: object, _object = {}): Promise<ResponseData<T>> {
     return this.service.get(url, { params, ..._object })
   }
 
-  post<T>(url: string, params?: object | string, _object = {}): Promise<ResultData<T>> {
+  post<T>(url: string, params?: object | string, _object = {}): Promise<ResponseData<T>> {
     return this.service.post(url, params, _object)
   }
 
@@ -114,15 +114,15 @@ class RequestHttp {
    * @param _object 请求
    * @returns Promise
    */
-  postForm<T>(url: string, params?: object | string, _object = {}): Promise<ResultData<T>> {
+  postForm<T>(url: string, params?: object | string, _object = {}): Promise<ResponseData<T>> {
     return this.service.post(url, params, _object)
   }
 
-  put<T>(url: string, params?: object, _object = {}): Promise<ResultData<T>> {
+  put<T>(url: string, params?: object, _object = {}): Promise<ResponseData<T>> {
     return this.service.put(url, params, _object)
   }
 
-  delete<T>(url: string, params?: any, _object = {}): Promise<ResultData<T>> {
+  delete<T>(url: string, params?: any, _object = {}): Promise<ResponseData<T>> {
     return this.service.delete(url, { params, ..._object })
   }
 

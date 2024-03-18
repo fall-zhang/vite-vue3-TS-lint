@@ -1,11 +1,11 @@
-export interface Result {
+export interface BaseResponse {
   code: string;
   msg: string;
 }
-export interface ResultData<T = any> extends Result {
+export interface ResponseData<T = any> extends BaseResponse {
   data: T
 }
-export enum ResultCode {
+export enum ResponseCode {
   SUCCESS = 200,
   ERROR = 500,
   OVERDUE = 401,
