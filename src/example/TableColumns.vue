@@ -59,7 +59,6 @@
 </template>
 
 <script>
-// type == 'index'
 const tableColumns = [
   { prop: 'jhmc', label: '序号', width: 120, align: 'center', useSlot: 'plan-name', },
   { prop: 'xgnr', label: '相关内容', width: 90, align: 'center', useSlot: 'relative-line', },
