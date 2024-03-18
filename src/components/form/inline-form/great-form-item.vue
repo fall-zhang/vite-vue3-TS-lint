@@ -1,7 +1,11 @@
 <template>
   <el-form-item :label="formItem.label" :prop="formItem.prop">
+    <!-- {{ formItem }} -->
     <template v-if="formItem.type === 'input'">
       <el-input :model-value="modelValue" @input="onChangeValue"></el-input>
+    </template>
+    <template v-else-if="formItem.type === 'number'">
+      <el-input-number :model-value="modelValue" @change="onChangeValue"></el-input-number>
     </template>
     <el-checkbox-group v-else-if="formItem.type === 'checkbox-group'" :model-value="modelValue" @change="onChangeValue">
       <el-checkbox v-for="option in formItem.options" :key="option.value" :label="option.value">
@@ -13,9 +17,6 @@
         {{ option.label }}
       </el-radio>
     </el-radio-group>
-    <template v-else-if="formItem.type === 'number'">
-      <el-input-number :model-value="modelValue" @change="onChangeValue"></el-input-number>
-    </template>
     <el-select v-else-if="formItem.type === 'select'" :model-value="modelValue" @change="onChangeValue">
       <el-option v-for="option in formItem.options" :key="option.value" :label="option.label"
         :value="option.value"></el-option>
@@ -26,7 +27,7 @@
 </template>
 
 <script setup lang="ts">
-import type { FormListItem } from './form-type.d'
+import type { FormListItem } from './form-type'
 import { throttle } from '@/utils/deBounce'
 const props = defineProps({
   formItem: {
@@ -36,7 +37,7 @@ const props = defineProps({
   },
   modelValue: {
     require: false,
-    type: [Object, String],
+    // type: Object as any,
     default: ''
   }
 })
@@ -47,7 +48,7 @@ function onChangeValue(value: number | number[] | string | string[]) {
   throttle(() => {
     console.log('🚀 ~ value:', value)
     emits('update:modelValue', value)
-  }, 100)
+  }, 100, true)
 }
 </script>
 

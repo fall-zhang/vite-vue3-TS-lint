@@ -1,38 +1,23 @@
 <template>
-  <div style="height: 600px;width: 800px;">
-
-    <el-button>点击就送</el-button>
-    <el-dialog :model-value="modelValue" width="680px" @close="onCloseDialog">
-      <el-form>
-        <template v-for="formItem in formList" :key="formItem.prop">
-          <div v-if="Array.isArray(formItem)" class="form-multiple" :style="{
-      'gridTemplateColumns': `repeat(${formItem.length},1fr)`
-    }">
-            <GreatFormItem v-for="singleForm in formItem" :key="singleForm.prop" :form-item="singleForm">
-            </GreatFormItem>
-          </div>
-          <template v-else>
-            <GreatFormItem></GreatFormItem>
-          </template>
-        </template>
-        <div class="drawer-footer">
-          <el-button class="cancel-button" size="small" @click="onCancelSubmit">取消</el-button>
-          <el-button type="primary" size="small" @click="onSubmitFrom">
-            保存
-          </el-button>
-        </div>
-      </el-form>
-    </el-dialog>
-  </div>
+  <el-dialog :model-value="visible" width="680px" :title="title" @close="onCloseDialog">
+    <InlineForm v-model="currentForm" :form-list="formList"></InlineForm>
+    <div class="drawer-footer">
+      <el-button class="cancel-button" @click="onCancelSubmit">取消</el-button>
+      <el-button type="primary" @click="onSubmitFrom">
+        保存
+      </el-button>
+    </div>
+  </el-dialog>
 </template>
 
 <script lang="ts" setup>
-import type { FormListType } from './form-type'
+import type { FormListType } from '../inline-form/form-type'
+import InlineForm from '../inline-form/index.vue'
 const props = defineProps({
   modelValue: {
     require: true,
-    default: false,
-    type: Boolean
+    default() { return {} },
+    type: Object
   },
   title: {
     require: false,
@@ -47,25 +32,26 @@ const props = defineProps({
         console.warn('不建议弹窗使用过多 form 内容，当前有 ' + newVal.length + '个')
       }
     },
-    type: Array as PropType<FormListType[]>
+    type: Array as PropType<FormListType>
   },
-  formValue: {
+  visible: {
     require: true,
-    default() { return {} },
-    type: Object
+    default: false,
+    type: Boolean
   }
 })
 
-const emits = defineEmits(['update:modelValue', 'update:formValue'])
+const currentForm = ref({})
+const emits = defineEmits(['update:modelValue', 'update:formValue', 'update:visible'])
 
-function onCancelSubmit() {
-
-}
 function onSubmitFrom() {
   emits('update:formValue', false)
 }
 function onCloseDialog() {
-  emits('update:modelValue', false)
+  emits('update:visible', false)
+}
+function onCancelSubmit() {
+  emits('update:visible', false)
 }
 </script>
 <script lang="ts">
@@ -76,5 +62,10 @@ export default {
 <style lang="scss" scoped>
 .form-multiple {
   display: grid;
+}
+
+.drawer-footer {
+  display: flex;
+  justify-content: flex-end;
 }
 </style>
