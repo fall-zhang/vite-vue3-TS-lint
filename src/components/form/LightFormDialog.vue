@@ -1,5 +1,5 @@
 <template>
-  <el-dialog ref="drawer" v-model:visible="drawerShow" v-dialogDrag direction="rtl" width="480px" :title="title"
+  <el-dialog ref="drawer" v-model:visible="drawerShow" direction="rtl" width="480px" :title="title"
     @opened="onOpened">
     <div class="drawer-content">
       <el-form ref="lightForm" label-width="80px" label-position="right" :model="model" size="small">
@@ -106,9 +106,6 @@ export default {
 
 .form-content {
   min-height: 80px;
-  // display: grid;
-  // grid-template-columns: 1fr 1fr;
-  // padding-left: 15px;
 }
 
 .drawer-content {

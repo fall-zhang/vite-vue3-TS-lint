@@ -1,8 +1,8 @@
+<!-- 总体布局 Card -->
 <template>
   <div class="card-layout">
     <div class="layout-title-zone" :class="title !== ' ' && 'title-bar'" style="margin-bottom:12px;">
-      <section v-if="title"
-        style="display: flex;justify-content: space-between;width: 100%;align-items: center;padding-left: 12px;">
+      <section v-if="title" class="title-text">
         <span style="font-size: 18px;font-weight: 550;">{{ title }}</span>
         <slot name="header-right"></slot>
       </section>
@@ -49,6 +49,14 @@ defineProps({
   align-items: center;
   justify-content: space-between;
   user-select: none;
+
+  .title-text {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    padding-left: 12px;
+  }
 
   &.title-bar {
     border-left: 8px solid #0d867f;

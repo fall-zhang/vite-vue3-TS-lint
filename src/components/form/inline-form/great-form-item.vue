@@ -29,21 +29,28 @@
 <script setup lang="ts">
 import type { FormListItem } from './form-type'
 import { throttle } from '@/utils/deBounce'
-const props = defineProps({
-  formItem: {
-    require: true,
-    type: Object as PropType<FormListItem>,
-    default: () => ({})
-  },
-  modelValue: {
-    require: false,
-    // type: Object as any,
-    default: ''
-  }
+const props = withDefaults(defineProps<{
+  formItem: FormListItem
+  modelValue: any
+}>(), {
+  // formItem() { return {} }
 })
+
+// defineProps({
+//   formItem: {
+//     require: true,
+//     type: Object as PropType<FormListItem>,
+//     default: () => ({})
+//   },
+//   modelValue: {
+//     require: false,
+//     // type: Object as any,
+//     default: ''
+//   }
+// })
 const emits = defineEmits(['update:modelValue'])
 
-function onChangeValue(value: number | number[] | string | string[]) {
+function onChangeValue(value: any) {
   console.log('🚀 ~ onChangeValue ~ ev:', value)
   throttle(() => {
     console.log('🚀 ~ value:', value)
