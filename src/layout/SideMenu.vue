@@ -39,7 +39,7 @@ import { exampleRoutes } from '@/router/exampleRouter'
 const exampleMenuList = ref<any[]>([])
 if (isDevelopment) {
   exampleMenuList.value = exampleRoutes.slice()
-  console.log('🚀 ~ exampleMenuList:', exampleMenuList)
+  // console.log('🚀 ~ exampleMenuList:', exampleMenuList)
 }
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)

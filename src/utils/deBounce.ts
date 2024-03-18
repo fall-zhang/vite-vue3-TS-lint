@@ -17,7 +17,7 @@ export default function (fun: fun, args: any, time: number = 200) {
   }
 }
 
-export function throttle(fn: fun, delay: number, immediate: boolean) {
+export function throttle(fn: fun, delay: number, immediate: boolean = false) {
   let flag = true
   let immediateRender = immediate
   // let timer: NodeJS.Timeout = 0
