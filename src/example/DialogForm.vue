@@ -1,17 +1,23 @@
 <template>
   <div class="drawer-content">
-    <el-button @click="showForm = true">点击就送</el-button>
-    <DialogForm v-model:visible="showForm" v-model="formValue" title="新增内容" :form-list="formList"></DialogForm>
+    <div>
+      <el-button @click="showForm = true">弹窗式 Form</el-button>
+      <el-button @click="showForm = true">轻量弹窗 Form</el-button>
+    </div>
+    <DialogForm v-model:visible="showForm" v-model="dialogFormValue" title="新增内容" :form-list="formList"></DialogForm>
+    <InlineForm v-model="formValue" :form-list="formList"></InlineForm>
   </div>
 </template>
 
 <script lang="ts" setup>
 import DialogForm from '@/components/form/dialog-form/index.vue'
-import type { FormListType } from '@/components/form/dialog-form/form-type'
+import type { FormListType } from '@/components/form/inline-form/form-type'
 const showForm = ref(false)
 const formValue = reactive({})
+const dialogFormValue = reactive({})
 const formList = ref<FormListType>([
-  { type: 'number', label: '文本输入', prop: 'text' },
+  { type: 'number', label: '数字输入', prop: 'text' },
+  { type: 'number', label: '文本输入', required: true, prop: 'text' },
 ])
 </script>
 

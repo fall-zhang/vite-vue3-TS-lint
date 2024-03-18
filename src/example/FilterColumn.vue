@@ -3,7 +3,7 @@
     <el-checkbox v-model="state.checkAll" :indeterminate="state.isIndeterminate"
       @change="onCheckAllChange">全选</el-checkbox>
     <div style="margin: 15px 0;"></div>
-    <div style="width: 320px;height: 46vh;overflow: hidden auto;">
+    <div style="width: 320px;max-height: 46vh;overflow: hidden auto;">
       <el-checkbox-group v-model="state.checkColumns" @change="onSingleCheckeChange">
         <el-checkbox v-for="col in state.allColumn" :key="col.prop" :label="col.label" style="width: 100%;">
           {{ col.label }}
@@ -47,7 +47,6 @@ onFilterList()
 
 function onFilterList() {
   const commitData = state.allColumn.filter(item => state.checkColumns.includes(item.label))
-  // console.log("🚀 ~ file: FilterColumn.vue:69 ~ onFilterList ~ commitData:", commitData)
   emit('update:modelValue', commitData)
 }
 function onSingleCheckeChange(value: any[]) {
