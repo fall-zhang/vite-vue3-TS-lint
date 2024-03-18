@@ -1,6 +1,6 @@
 <template>
   <div class="card-layout">
-    <div class="title-zone" :class="title !== ' ' && 'title-bar'" style="margin-bottom:12px;">
+    <div class="layout-title-zone" :class="title !== ' ' && 'title-bar'" style="margin-bottom:12px;">
       <section v-if="title"
         style="display: flex;justify-content: space-between;width: 100%;align-items: center;padding-left: 12px;">
         <span style="font-size: 18px;font-weight: 550;">{{ title }}</span>
@@ -15,35 +15,17 @@
   </div>
 </template>
 
-<script lang="ts">
-export default {
-  props: {
-    title: {
-      type: String,
-      default: ''
-    },
-    icon: {
-      type: String,
-      default: ''
-    }
+<script lang="ts" setup>
+defineProps({
+  title: {
+    type: String,
+    default: ''
   },
-  data() {
-    return {
-
-    }
-  },
-  computed: {},
-  watch: {},
-  created() {
-
-  },
-  mounted() {
-
-  },
-  methods: {
-
+  icon: {
+    type: String,
+    default: ''
   }
-}
+})
 </script>
 
 <style scoped lang="scss">
@@ -62,7 +44,7 @@ export default {
   }
 }
 
-.title-zone {
+.layout-title-zone {
   display: flex;
   align-items: center;
   justify-content: space-between;
