@@ -7,6 +7,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import vueJsx from '@vitejs/plugin-vue-jsx'
+import VueDevTools from 'vite-plugin-vue-devtools'
 const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 // https://vitejs.dev/config/
@@ -19,6 +20,10 @@ export default defineConfig({
       '@A': pathResolve(__dirname, 'src/assets'),
       '@P': pathResolve(__dirname, 'src/pages')
     }
+  },
+  build: {
+    // manifest
+    manifest: true
   },
   server: {
     port: 7788,
@@ -33,6 +38,7 @@ export default defineConfig({
   plugins: [
     vue(),
     vueJsx(),
+    VueDevTools(),
     AutoImport({
       resolvers: [ElementPlusResolver()],
       dts: './src/global/auto-imports.d.ts',
