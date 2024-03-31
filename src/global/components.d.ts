@@ -52,6 +52,7 @@ declare module 'vue' {
     FilePreview: typeof import('./../components/data-display/FilePreview.vue')['default']
     FlexButtonGroup: typeof import('./../components/basic-material/FlexButtonGroup.vue')['default']
     FlexCard: typeof import('./../components/data-display/card/FlexCard.vue')['default']
+    FormGroup: typeof import('./../components/form/form-group/FormGroup.vue')['default']
     GreatFormItem: typeof import('./../components/form/inline-form/great-form-item.vue')['default']
     Header: typeof import('./../components/layout-material/Header.vue')['default']
     IconBaseline: typeof import('./../components/icons/IconBaseline.vue')['default']
