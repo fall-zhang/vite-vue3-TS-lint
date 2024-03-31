@@ -5,15 +5,16 @@
 </template>
 
 <script lang="ts" setup>
-import * as echarts from 'echarts'
-function getCharPie(receive) {
+// import * as echarts from 'echarts'
+const echarts = () => { }
+function getCharPie(receive: any) {
   let pieData = [
     { name: '一季度', value: 20 },
     { name: '二季度', value: 40 },
     { name: '三季度', value: 34 },
     { name: '四季度', value: 68 },
   ]
-  const optionCover = {}
+  const optionCover: Record<string, any> = {}
   if (receive) {
     pieData = receive
   } else {
@@ -70,55 +71,38 @@ function getCharPie(receive) {
   return option
 }
 const props = defineProps({
-  resourceType: {
+  data: {
     require: false,
     type: Array,
     default: () => ([])
   }
 })
+const chartPie = shallowRef()
 const state = reactive({
   currentActive: '原值',
   // 资产净值
   pureType: [],
   // 资产原值
   originType: [],
-  chartPie: null
 })
-// watch{
-//   resourceType(newVal) {
-//     this.handleValue()
-//   },
-//   currentActive(newVal) {
-//     this.handleValue()
-//   }
-// },
+
 onMounted(() => {
   initChart()
   handleValue()
 })
 function handleValue() {
-  const pureArr = []
-  const originArr = []
-  props.resourceType.forEach(item => {
+  const originArr: Record<'name' | 'value', unknown>[] = []
+  props.data.forEach(item => {
     originArr.push({
-      name: item['类型'],
-      value: item['原值'],
-    })
-    pureArr.push({
-      name: item['类型'],
-      value: item['净值'],
+      name: '某种内容',
+      value: 54,
     })
   })
-  if (this.currentActive === '原值') {
-    this.chartPie.clear()
-    this.chartPie.setOption(getCharPie(originArr))
-  } else if (this.currentActive === '净值') {
-    this.chartPie.clear()
-    this.chartPie.setOption(getCharPie(pureArr))
-  }
+  chartPie.value.clear()
+  chartPie.value.setOption(getCharPie(originArr))
 }
 function initChart() {
-  this.chartPie = echarts.init(this.$refs['chart-pie'])
+  // chartPie.value = echarts.init($refs['chart-pie'])
 }
 </script>
 <script>

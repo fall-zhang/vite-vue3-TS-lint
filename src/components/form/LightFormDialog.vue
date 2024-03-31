@@ -1,5 +1,5 @@
 <template>
-  <el-dialog ref="drawer" v-model:visible="drawerShow" direction="rtl" width="480px" :title="title"
+  <el-dialog ref="drawer" v-model:visible="_this.drawerShow" direction="rtl" width="480px" :title="title"
     @opened="onOpened">
     <div class="drawer-content">
       <el-form ref="lightForm" label-width="80px" label-position="right" :model="model" size="small">
@@ -19,76 +19,67 @@
   </el-dialog>
 </template>
 
-<script lang="ts">
-export default {
-  name: 'LightFormDialog',
-  props: {
-    visible: {
-      require: true,
-      default: false,
-      type: Boolean
-    },
-    title: {
-      require: false,
-      default: '',
-      type: String
-    },
-    model: {
-      require: false,
-      default: () => ({}),
-      type: Object
-    },
-    rules: {
-      require: false,
-      default: () => ({}),
-      type: Object
-    }
+<script lang="ts" setup>
+const props = defineProps({
+  visible: {
+    require: true,
+    default: false,
+    type: Boolean
   },
-  emits: ['submit', 'cancel', 'update:visible'],
-  data() {
-    return {
-      drawerShow: false,
-      submitLoading: false,
-    }
+  title: {
+    require: false,
+    default: '',
+    type: String
   },
-  watch: {
-    visible(newVal) {
-      this.drawerShow = newVal
-    },
-    drawerShow(newVal) {
-      this.$emit('update:visible', newVal)
-    }
+  model: {
+    require: false,
+    default: () => ({}),
+    type: Object
   },
-  mounted() {
-    this.$emit('update:visible', false)
-  },
-  methods: {
-    submitFrom() {
-      const _this = this
-      if (this.$refs.lightForm) {
-        _this.$refs.lightForm?.validate((valid) => {
-          if (valid) {
-            _this.$emit('submit')
-            _this.drawerShow = false
-          } else {
-            console.log('error submit!!')
-            return false
-          }
-        })
-      }
-    },
-    onOpened() {
-      if (this.$refs.lightForm) {
-        this.$refs.lightForm.resetFields()
-      }
-      this.$refs.lightForm?.resetFields()
-    },
-    cancelSubmit() {
-      this.$emit('cancel')
-      this.$refs.lightForm.resetFields()
-      this.drawerShow = false
-    }
+  rules: {
+    require: false,
+    default: () => ({}),
+    type: Object
   }
+})
+const emit = defineEmits(['submit', 'cancel', 'update:visible'])
+const lightForm = ref()
+const _this = reactive({
+  drawerShow: false,
+  submitLoading: false,
+})
+watch(() => props.visible, (newVal) => {
+  _this.drawerShow = newVal
+})
+watch(() => _this.drawerShow, (newVal) => {
+  emit('update:visible', newVal)
+})
+onMounted(() => {
+  emit('update:visible', false)
+})
+function submitFrom() {
+  if (lightForm.value) {
+    lightForm.value?.validate((valid: boolean) => {
+      if (valid) {
+        emit('submit')
+        _this.drawerShow = false
+      } else {
+        console.log('error submit!!')
+        return false
+      }
+    })
+  }
+}
+function onOpened() {
+  if (lightForm.value) {
+    lightForm.value.resetFields()
+  }
+  lightForm.value?.resetFields()
+}
+function cancelSubmit() {
+  emit('cancel')
+  lightForm.value.resetFields()
+  _this.drawerShow = false
 }
 </script>
 

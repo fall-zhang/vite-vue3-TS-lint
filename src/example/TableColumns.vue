@@ -3,11 +3,11 @@
   <div class="search-zone">
     <el-form label-width="90px" :model="searchForm" size="mini">
       <div style="display: grid;grid-template-columns: repeat(4,1fr);"></div>
-      <el-form-item label="线路名称">
-        <el-date-picker v-model="searchForm.jhnd" value-format="yyyy" type="year"></el-date-picker>
+      <el-form-item label="名称">
+        <el-input v-model="searchForm.name"></el-input>
       </el-form-item>
-      <el-form-item label="电压等级">
-        <el-date-picker v-model="searchForm.jhnd" value-format="yyyy" type="year"></el-date-picker>
+      <el-form-item label="类型">
+        <el-date-picker v-model="searchForm.type" value-format="yyyy" type="year"></el-date-picker>
       </el-form-item>
     </el-form>
     <div>
@@ -72,6 +72,8 @@ export default {
     return {
       maintainVisible: false,
       searchForm: {
+        name: '',
+        type: ''
       },
       tableColumns,
       tableData: [],
