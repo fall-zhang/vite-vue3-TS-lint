@@ -2,7 +2,7 @@ import type { RouteRecordRaw } from 'vue-router'
 import { BlankLayout } from '../layout'
 
 const exampleComponents = import.meta.glob('@/example/*.vue')
-console.log('🚀 ~ exampleComponents:', exampleComponents)
+// console.log('🚀 ~ exampleComponents:', exampleComponents)
 // function getFileName(fileList: Record<string, any>) {
 //   const result = Object.keys(fileList).map(filePath => {
 //     const fileName = filePath.split('/').at(-1)

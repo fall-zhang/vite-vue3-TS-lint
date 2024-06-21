@@ -11,8 +11,8 @@
 </template>
 
 <script lang="ts" setup>
-import type { FormListType } from '../inline-form/form-type'
-import InlineForm from '../inline-form/index.vue'
+import type { FormListType } from '../../form/inline-form/form-type'
+import InlineForm from '../../form/inline-form/index.vue'
 const props = defineProps({
   modelValue: {
     require: true,

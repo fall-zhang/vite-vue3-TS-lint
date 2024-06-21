@@ -105,7 +105,7 @@ function initChart() {
   // chartPie.value = echarts.init($refs['chart-pie'])
 }
 </script>
-<script>
+<script lang="ts">
 export default {
   name: 'PieChart',
 }

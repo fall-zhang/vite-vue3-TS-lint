@@ -2,17 +2,18 @@
   <!-- 查找区域 -->
   <div class="search-zone">
     <el-form label-width="90px" :model="searchForm" size="mini">
-      <div style="display: grid;grid-template-columns: repeat(4,1fr);"></div>
-      <el-form-item label="名称">
-        <el-input v-model="searchForm.name"></el-input>
-      </el-form-item>
-      <el-form-item label="类型">
-        <el-date-picker v-model="searchForm.type" value-format="yyyy" type="year"></el-date-picker>
-      </el-form-item>
+      <div style="display: grid;grid-template-columns: repeat(4,1fr);">
+        <el-form-item label="名称">
+          <el-input v-model="searchForm.name"></el-input>
+        </el-form-item>
+        <el-form-item label="类型">
+          <el-date-picker v-model="searchForm.type" value-format="yyyy" type="year"></el-date-picker>
+        </el-form-item>
+      </div>
     </el-form>
     <div>
-      <el-button class="sparkButton" type="primary" size="small" @click="onSearchTable">查询</el-button>
-      <el-button class="sparkButton" type="primary" size="small" @click="onResetSearch">重置</el-button>
+      <el-button class="sparkButton" type="primary" @click="onSearchTable">查询</el-button>
+      <el-button class="sparkButton" type="primary" @click="onResetSearch">重置</el-button>
     </div>
   </div>
   <!-- 功能区域 -->
