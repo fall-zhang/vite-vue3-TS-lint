@@ -1,3 +1,9 @@
+<!--
+ |              | 图表1 |
+ |    地图      |      |
+————————————————————————————
+| 图表2 | 图表3 | 图表4 | -->
+
 <template>
   <FlexCard title="类型分析">
     <div ref="chart-pie" class="chart-pie" style="height: 100%;width: 100%;flex: 1;"></div>
