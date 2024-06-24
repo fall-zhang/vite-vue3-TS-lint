@@ -1,17 +1,17 @@
 <template>
-  <el-dialog ref="drawer" v-model:visible="_this.drawerShow" direction="rtl" width="480px" :title="title"
-    @opened="onOpened">
+  {{ drawerShow }}
+  <el-dialog ref="drawerRef" v-model="drawerShow" direction="rtl" width="480px" :title="title" @opened="onOpened">
     <div class="drawer-content">
-      <el-form ref="lightForm" label-width="80px" label-position="right" :model="model" size="small">
+      <el-form ref="lightForm" label-width="80px" label-position="right" :model="model">
         <div class="form-content">
           <slot></slot>
         </div>
       </el-form>
       <div class="drawer-footer">
-        <el-button class="cancel-button" size="small" @click="cancelSubmit">
+        <el-button class="cancel-button" @click="cancelSubmit">
           取消
         </el-button>
-        <el-button type="primary" size="small" @click="submitFrom">
+        <el-button type="primary" @click="submitFrom">
           确认
         </el-button>
       </div>
@@ -20,6 +20,7 @@
 </template>
 
 <script lang="ts" setup>
+const drawerShow = ref(false)
 const props = defineProps({
   visible: {
     require: true,
@@ -49,6 +50,7 @@ const _this = reactive({
   submitLoading: false,
 })
 watch(() => props.visible, (newVal) => {
+  console.log('🚀 ~ watch ~ newVal:', newVal)
   _this.drawerShow = newVal
 })
 watch(() => _this.drawerShow, (newVal) => {
