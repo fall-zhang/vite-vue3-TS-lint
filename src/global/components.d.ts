@@ -9,6 +9,7 @@ declare module 'vue' {
   export interface GlobalComponents {
     _collection: typeof import('./../components/_collection/index.vue')['default']
     Button: typeof import('./../components/basic-material/Button.vue')['default']
+    ChartBox: typeof import('./../components/data-display/ChartBox.vue')['default']
     CollectionItem: typeof import('./../components/_collection/CollectionItem.vue')['default']
     ColorSelect: typeof import('./../components/form/select/ColorSelect.vue')['default']
     copy: typeof import('./../components/dialog/dialog-form copy/index.vue')['default']
@@ -50,6 +51,7 @@ declare module 'vue' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+    ElUpload: typeof import('element-plus/es')['ElUpload']
     FilePreview: typeof import('./../components/data-display/FilePreview.vue')['default']
     FileUploadDialog: typeof import('./../components/dialog/FileUploadDialog.vue')['default']
     FlexButtonGroup: typeof import('./../components/basic-material/FlexButtonGroup.vue')['default']
@@ -71,6 +73,7 @@ declare module 'vue' {
     IdentifySlide: typeof import('./../components/form/identify/IdentifySlide.vue')['default']
     InfinityScroll: typeof import('./../components/data-display/InfinityScroll.vue')['default']
     InlineForm: typeof import('./../components/form/inline-form/index.vue')['default']
+    InlineRadio: typeof import('./../components/form/select/InlineRadio.vue')['default']
     LayoutCard: typeof import('./../components/data-display/card/LayoutCard.vue')['default']
     LightDialog: typeof import('./../components/more-layer/LightDialog.vue')['default']
     LightFormDialog: typeof import('./../components/dialog/LightFormDialog.vue')['default']
