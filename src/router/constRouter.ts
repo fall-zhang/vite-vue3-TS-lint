@@ -3,10 +3,11 @@ import { BlankLayout } from '../layout'
 // import { BlankLayout } from '../layout'
 import { isDevelopment } from '@/config'
 import ErrorPage404 from '@/pages/error-pages/404.vue'
+import PageLayout from '@/layout/PageLayout.vue'
 const constRouters: RouteRecordRaw[] = [
   {
     path: '/redirect',
-    component: BlankLayout,
+    component: PageLayout,
     children: [
       {
         path: '/redirect/:path*',
@@ -22,7 +23,7 @@ const constRouters: RouteRecordRaw[] = [
   },
   {
     path: '/example',
-    component: BlankLayout,
+    component: PageLayout,
     meta: { pageTitle: '首页' },
     children: [
       {
@@ -34,8 +35,6 @@ const constRouters: RouteRecordRaw[] = [
   {
     path: '/',
     redirect: '/home',
-    children: [
-    ]
   },
 ]
 export default constRouters

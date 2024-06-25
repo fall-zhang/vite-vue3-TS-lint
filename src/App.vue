@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import zhCn from 'element-plus/es/locale/lang/zh-cn'
-import { PageLayout } from './layout'
 import { useRoute } from 'vue-router'
 const language = ref(zhCn)
 
@@ -19,13 +18,11 @@ watch(route, (newVal) => {
 
 <template>
   <el-config-provider :locale="language">
-    <PageLayout :title="title" :no-side="!$route.fullPath.includes('example')">
-      <router-view #="{ Component }">
-        <KeepAlive>
-          <component :is="Component"></component>
-        </KeepAlive>
-      </router-view>
-    </PageLayout>
+    <router-view #="{ Component }">
+      <KeepAlive>
+        <component :is="Component"></component>
+      </KeepAlive>
+    </router-view>
   </el-config-provider>
 </template>
 

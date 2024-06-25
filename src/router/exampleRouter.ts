@@ -1,15 +1,8 @@
 import type { RouteRecordRaw } from 'vue-router'
-import { BlankLayout } from '../layout'
+import ExampleLayout from '@/layout/ExampleLayout.vue'
 
 const exampleComponents = import.meta.glob('@/example/*.vue')
-// console.log('🚀 ~ exampleComponents:', exampleComponents)
-// function getFileName(fileList: Record<string, any>) {
-//   const result = Object.keys(fileList).map(filePath => {
-//     const fileName = filePath.split('/').at(-1)
-//     return fileName
-//   })
-//   return result
-// }
+
 function getFileName(fileName: string) {
   return fileName.split('/').at(-1)
 }
@@ -27,6 +20,7 @@ function genRoutes(fileList: Record<string, any>) {
       }
     }
   })
+  console.log('🚀 ~ genRoutes ~ result:', result)
   return result
 }
 export const exampleRoutes = genRoutes(exampleComponents)
@@ -34,7 +28,7 @@ export const exampleRoutes = genRoutes(exampleComponents)
 const constRouters: RouteRecordRaw[] = [
   {
     path: '/example',
-    component: BlankLayout,
+    component: ExampleLayout,
     children: [
       ...exampleRoutes,
       {
