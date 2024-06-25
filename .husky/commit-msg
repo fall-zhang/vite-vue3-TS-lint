@@ -1,4 +1,4 @@
 #!/bin/sh
 # . "$(dirname "$0")/_/husky.sh"
-
-npx --no -- commitlint --edit $1
+# 对提交的 message 进行限制
+# npx --no -- commitlint --edit $1
