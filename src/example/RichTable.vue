@@ -1,10 +1,12 @@
 <template>
-  <fan-table :columns="columns" :table-data="tableData" :scroll-width="0" :virtual-scroll-option="{ enable: true }"
-    :max-height="500" row-key-field-name="rowKey" :border-around="true" :border-x="true" :border-y="true"
-    :style="{ 'word-break': 'keepall' }" />
+  <RichTable :columns="columns" />
 </template>
 
 <script lang="ts" setup>
+import RichTable from '@/components/table/rich-table/RichTable.vue'
+defineOptions({
+  name: 'RichTableExample'
+})
 const columns = ref([
   { field: 'name', key: 'a', title: 'Name', align: 'center' },
   { field: 'date', key: 'b', title: 'Date', align: 'left' },
