@@ -27,7 +27,8 @@
     "element-plus": "^2.6.2",
     "vue": "^3.4.21",
     "vue-fantable": "^0.2.3",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "xlsx": "^0.18.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.8.1",
