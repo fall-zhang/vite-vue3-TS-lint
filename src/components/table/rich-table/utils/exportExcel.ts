@@ -1,62 +1,42 @@
 import { utils, writeFile } from 'xlsx'
 
 interface DataItem {
-  readonly id: string;
-  [propName: string]: string;
+  // readonly id: string;
+  [propName: string]: string ;
 }
 
 interface Columns {
-  dataKey: string;
+  prop: string;
   key: string;
-  title: string;
+  label: string;
   width?: number;
-  [propName: string]: string | number;
+  [propName: string]: string | number |undefined;
 }
 
-const generateColumns = (length = 10, prefix = 'column-', props?: any) =>
-  Array.from({ length }).map((_, columnIndex) => ({
-    ...props,
-    key: `${prefix}${columnIndex}`,
-    dataKey: `${prefix}${columnIndex}`,
-    title: `Column ${columnIndex}`,
-    width: 150
-  }))
+type TableData = {
+  tableColumn: Columns[],
+  tableData:DataItem[]
+}
 
-const generateData = (
-  columns: ReturnType<typeof generateColumns>,
-  length = 200,
-  prefix = 'row-'
-) =>
-  Array.from({ length }).map((_, rowIndex) => {
-    return columns.reduce(
-      (rowData, column, columnIndex) => {
-        rowData[column.dataKey] = `Row ${rowIndex} - Col ${columnIndex}`
-        return rowData
-      },
-      {
-        id: `${prefix}${rowIndex}`,
-        parentId: null
-      }
-    )
-  })
-
-const columns = generateColumns(10)
-const data = generateData(columns, 1000)
-
-export const exportExcel = (fileName:string) => {
-  const res: string[][] = data.map((item: DataItem) => {
+/**
+ * 导出表格中的数据
+ * @param fileName
+ * @param data
+ */
+export const exportExcel = ({ tableColumn, tableData }:TableData, fileName?:string) => {
+  const xlsxData: string[][] = tableData.map((item: DataItem) => {
     const arr:string[] = []
-    columns.forEach((column: Columns) => {
-      arr.push(item[column.dataKey])
+    tableColumn.forEach((column: Columns) => {
+      arr.push(item[column.prop])
     })
     return arr
   })
   const titleList: string[] = []
-  columns.forEach((column: Columns) => {
-    titleList.push(column.title)
+  tableColumn.forEach((column: Columns) => {
+    titleList.push(column.label)
   })
-  res.unshift(titleList)
-  const workSheet = utils.aoa_to_sheet(res)
+  xlsxData.unshift(titleList)
+  const workSheet = utils.aoa_to_sheet(xlsxData)
   const workBook = utils.book_new()
   utils.book_append_sheet(workBook, workSheet, '数据报表')
 

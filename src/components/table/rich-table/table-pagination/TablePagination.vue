@@ -1,7 +1,8 @@
 <!-- 筛选功能 -->
 <template>
-  <div style="width:100%;height: 420px;overflow: auto;">
+  <div class="pagination-box">
     <el-pagination size="small" background layout="prev, pager, next" :total="50" class="mt-4" />
+
   </div>
 </template>
 
@@ -20,10 +21,16 @@ const props = defineProps({
   },
   pageSizes: {
     require: true,
-    default: [10, 20, 30, 40, 50, 100],
-    type: () => ([])
+    default: () => [10, 20, 30, 40, 50, 100],
+    type: Array
   },
 })
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.pagination-box {
+  margin-top: 12px;
+  display: flex;
+  justify-content: flex-end;
+}
+</style>
