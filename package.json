@@ -22,6 +22,7 @@
     ]
   },
   "dependencies": {
+    "@icon-park/vue-next": "^1.4.2",
     "axios": "^1.7.2",
     "docx-preview": "^0.3.2",
     "echarts": "^5.5.0",
