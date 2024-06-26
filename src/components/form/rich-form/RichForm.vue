@@ -10,7 +10,7 @@ const formOptionList = [
   {
     label: '姓名',
     prop: '',
-    type: 'input',
+    setters: ['input'],
     default: ''
   }
 ]
