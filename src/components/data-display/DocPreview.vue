@@ -1,7 +1,8 @@
+<!-- doc 文件和 docx 文件的预览功能 -->
 <template>
   <div style="width:100%;height: 420px;overflow: auto;">
     <el-button @click="onDownLoad">原文下载</el-button>
-    <div ref="docDom" style="transform: scale(1);transform-origin: center 0;"></div>
+    <div ref="docDomRef" style="transform: scale(1);transform-origin: center 0;"></div>
   </div>
 </template>
 
@@ -17,14 +18,14 @@ const props = defineProps({
   // },
   file: {
     require: false,
-    type: File,
+    type: [File, Blob],
     default: ''
   }
 })
-const docDom = ref<HTMLDivElement>()
+const docDomRef = ref<HTMLDivElement>()
 onMounted(() => {
-  renderDoc(props.file, docDom.value).then(() => {
-
+  if (!docDomRef.value) return
+  renderDoc(props.file, docDomRef.value).then(() => {
   }).catch((err: any) => {
     throw new Error(err)
   })

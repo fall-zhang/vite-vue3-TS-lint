@@ -11,8 +11,8 @@
 </template>
 
 <script lang="ts" setup>
-// import * as echarts from 'echarts'
-const echarts = () => { }
+import { init } from 'echarts'
+// const echarts = () => { }
 function getCharPie(receive: any) {
   let pieData = [
     { name: '一季度', value: 20 },
@@ -108,7 +108,7 @@ function handleValue() {
   chartPie.value.setOption(getCharPie(originArr))
 }
 function initChart() {
-  // chartPie.value = echarts.init($refs['chart-pie'])
+  chartPie.value = init($refs['chart-pie'])
 }
 </script>
 <script lang="ts">

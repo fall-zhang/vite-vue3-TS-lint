@@ -16,9 +16,8 @@ onMounted(() => {
 function onClickRadio(newVal: string) {
   currentSelect.value = newVal
 }
-const props = defineProps({
-
-})
+// const props = defineProps({
+// })
 </script>
 
 <style scoped lang="scss">

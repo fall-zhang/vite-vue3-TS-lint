@@ -1,25 +1,26 @@
+<!-- 多个表单的编辑，增删改 -->
 <template>
   <div class="port-list">
     <div v-for="(item, index) in workList" :key="item.meetingId" class="show-list">
       <div class="show-list-info">
         <div>
           <el-form-item label="涉及内容ID">
-            <el-input v-model="item.context" size="mini" placeholder="涉及内容ID" :rows="1" style="padding: 2px 0;">
+            <el-input v-model="item.context" placeholder="涉及内容ID" :rows="1" style="padding: 2px 0;">
             </el-input>
           </el-form-item>
           <el-form-item label="涉及内容">
-            <el-input v-model="item.content" size="mini" placeholder="涉及内容" :rows="1" style="padding: 2px 0;">
+            <el-input v-model="item.content" placeholder="涉及内容" :rows="1" style="padding: 2px 0;">
             </el-input>
           </el-form-item>
           <el-form-item label="可选内容">
-            <el-input v-model="item.optional" size="mini" placeholder="可选内容" :rows="1" style="padding: 2px 0;">
+            <el-input v-model="item.optional" placeholder="可选内容" :rows="1" style="padding: 2px 0;">
             </el-input>
           </el-form-item>
         </div>
         <div class="show-list-opt">
-          <el-button v-show="workList.length > 1" circle size="mini" icon="el-icon-minus" class="lightButton"
+          <el-button v-show="workList.length > 1" circle icon="el-icon-minus" class="lightButton"
             @click="onDeleteItem(index)"></el-button>
-          <el-button circle size="mini" icon="el-icon-plus" class="lightButton" @click="onAddItem(item)"></el-button>
+          <el-button circle icon="el-icon-plus" class="lightButton" @click="onAddItem(item)"></el-button>
         </div>
       </div>
     </div>

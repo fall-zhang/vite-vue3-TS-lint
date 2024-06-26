@@ -1,11 +1,11 @@
 <template>
-  <RichTable :columns="columns" />
+  <RichForm></RichForm>
 </template>
 
 <script lang="ts" setup>
-import RichTable from '@/components/table/rich-table/RichTable.vue'
+import RichForm from '@/components/form/rich-form/RichForm.vue'
 defineOptions({
-  name: 'RichTableExample'
+  name: 'RichFormExample'
 })
 const columns = ref([
   { field: 'name', key: 'a', title: 'Name', align: 'center' },
