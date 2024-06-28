@@ -6,7 +6,7 @@
 
 <template>
   <FlexCard title="类型分析">
-    <div ref="chart-pie" class="chart-pie" style="height: 100%;width: 100%;flex: 1;"></div>
+    <div ref="chartPieRef" class="chart-pie" style="height: 100%;width: 100%;flex: 1;"></div>
   </FlexCard>
 </template>
 
@@ -84,6 +84,7 @@ const props = defineProps({
   }
 })
 const chartPie = shallowRef()
+const chartPieRef = ref()
 const state = reactive({
   currentActive: '原值',
   // 资产净值
@@ -108,7 +109,7 @@ function handleValue() {
   chartPie.value.setOption(getCharPie(originArr))
 }
 function initChart() {
-  chartPie.value = init($refs['chart-pie'])
+  chartPie.value = init(chartPieRef.value)
 }
 </script>
 <script lang="ts">

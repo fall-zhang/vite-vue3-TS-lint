@@ -17,5 +17,5 @@ export enum RequestMethod {
   PATCH = 'PATCH',
   PUT = 'PUT',
   DELETE = 'DELETE',
-  DOWNLOAD = 'DELETE'
+  DOWNLOAD = 'DOWNLOAD'
 }

@@ -1,7 +1,8 @@
 <!-- doc 文件和 docx 文件的预览功能 -->
 <template>
   <div class="table-container">
-    <el-button @click="onExportFile">导出文件</el-button>
+    <el-button @click="onExportFile">导出表格配置（JSON）</el-button>
+    <el-button @click="onExportFile">导出表格内容</el-button>
     <slot name="table-filter">
       <TableFilter @search="onTriggerSearch"></TableFilter>
     </slot>
