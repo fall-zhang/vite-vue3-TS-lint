@@ -4,7 +4,7 @@ form-item，一个数据对应的值
 -->
 <!-- type 类型为 array 或者 object 时，调用 FormZone -->
 <template>
-  <!-- 内容为单行： label 长度小于 7 或者使用单行的 setter -->
+  <!-- 内容为单行：label 长度小于 7 或者使用单行的 setter -->
   <div class="form-item" :class="basicSetterType.includes(currentSetter) && formOption.label.length < 7 && 'on-line'">
     <div class="basic-label">{{ formOption.label }}
       <HelpTooltip v-if="formOption.tips" :tip="formOption.tips"></HelpTooltip>
@@ -25,13 +25,6 @@ form-item，一个数据对应的值
           :key="optionItem.value"></el-option>
       </el-select>
     </div>
-    <!-- 切换按钮 -->
-    <!-- <template v-if="allSetters.length > 1">
-      <div style="flex: 1;"></div>
-      <div class="toggle-icon" @click="onChangeSetter">
-        <IconRefresh class="g-icon-center" :class="setterIndex % 2 == 0 ? 'reverse' : ''" />
-      </div>
-    </template> -->
   </div>
   <div v-if="!basicSetterType.includes(currentSetter)" class="default-container">
     <el-input v-if="currentSetter === 'textarea'" v-model="formValue" type="textarea" style="max-height: 72px;"
@@ -42,6 +35,9 @@ form-item，一个数据对应的值
     <FormJSON v-else-if="currentSetter === 'function'" v-model="formValue" class="complex-container"
       @change="onChangeComplexValue">
     </FormJSON>
+    <FormItemArray v-else-if="currentSetter === 'array'" v-model="formValue" class="complex-container"
+      @change="onChangeComplexValue">
+    </FormItemArray>
   </div>
 </template>
 
@@ -50,30 +46,27 @@ import { deepClone } from '@/utils'
 import HelpTooltip from '../components/HelpTooltip.vue'
 import FormJSON from './FormItemJSON.vue'
 import { Refresh as IconRefresh } from '@icon-park/vue-next'
-const prop = defineProps({
-  formOption: {
-    type: Object,
-    default: () => ({
-      type: 'input',
-      optional: []
-    })
-  },
-  path: {
-    type: Array,
-    default: () => ([])
-  },
-  receiveValue: {
-    require: true,
-    type: [Object, Number, String, Array, Boolean],
-    default: null
-  }
-})
+import { OptionItem } from '../form';
+// {
+//   formOption: {
+//     default: () => ({
+//       optional: []
+//     })
+//   },
+//   receiveValue: {
+//     default: null
+//   }
+// }
+const prop = defineProps<{
+  formOption: OptionItem,
+  receiveValue: unknown
+}>()
 
 const emit = defineEmits(['change'])
 const formValue = ref<any>()
 const setterIndex = ref<number>(0)
 const currentSetter = ref<string>('')
-const allSetters = ref([])
+const allSetters = ref<string[]>([])
 const basicSetterType = ref(['input', 'color', 'switch', 'slider', 'number', 'select'])
 const complexSetterType = ref(['json', 'textarea'])
 onBeforeMount(() => {
@@ -94,11 +87,13 @@ onBeforeMount(() => {
     }
   }
   allSetters.value = prop.formOption.setters
+  // console.log("🚀 ~ onBeforeMount ~ allSetters.value:", allSetters.value)
   currentSetter.value = allSetters.value[0]
   setterIndex.value = 0
 })
 
 function catchError() {
+  // console.log("🚀 ~ catchError ~ prop.formOption:", prop.formOption)
   const defaultSetter = prop.formOption.setters[0]
   const defaultVal = prop.formOption.default
   const hasChildren = !!prop.formOption.children
@@ -119,7 +114,7 @@ function catchError() {
   }
 }
 // timber
-const timberFun = ref<number>()
+const timberFun = ref<number | NodeJS.Timeout>()
 function onChangeInput() {
   clearTimeout(timberFun.value)
   timberFun.value = setTimeout(onChangeValue, 500)
@@ -144,10 +139,10 @@ function onChangeSetter() {
   display: flex;
   align-items: center;
 
-  &.on-line {
-    height: 26px;
-    // border-bottom: 1px solid #aeaeae67;
-  }
+  // &.on-line {
+  //   height: 26px;
+  //   // border-bottom: 1px solid #aeaeae67;
+  // }
 
   .basic-form-item {
     flex: 1;
