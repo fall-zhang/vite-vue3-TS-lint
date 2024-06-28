@@ -1,42 +1,27 @@
 import vue from 'eslint-plugin-vue'
-import typescriptEslint from '@typescript-eslint/eslint-plugin'
+// import typescriptEslint from '@typescript-eslint/eslint-plugin'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
-import js from '@eslint/js'
-import typescriptParser from '@typescript-eslint/parser'
+import eslint from '@eslint/js'
+// import typescriptParser from '@typescript-eslint/parser'
+import tseslint from 'typescript-eslint'
 import { FlatCompat } from '@eslint/eslintrc'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const compat = new FlatCompat({
   baseDirectory: __dirname,
-  recommendedConfig: js.configs.recommended,
-  allConfig: js.configs.all
+  recommendedConfig: eslint.configs.recommended,
+  allConfig: eslint.configs.all
 })
 
-export default [
-  ...compat.extends(
-    'eslint-config-standard',
-    'plugin:vue/vue3-recommended',
-  ),
-  js.configs.recommended,
+export default tseslint.config(
+  eslint.configs.recommended,
+  ...tseslint.configs.recommended,
   {
     plugins: {
       vue,
-      '@typescript-eslint': typescriptEslint,
     },
-    languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      parserOptions: {
-        parser: typescriptParser,
-        // parser: typescriptParser,
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-    },
-
     rules: {
       'no-undef': 0, // 未命名变量不报错：当未命名变量的检查交给 ts 类型检查器时使用
       'no-unused-vars': 1, // 未使用的变量
@@ -70,7 +55,31 @@ export default [
       'vue/max-attributes-per-line': 0,
       // ts 相关配置
       '@typescript-eslint/no-explicit-any': 1,
+      '@typescript-eslint/no-unused-vars': 1,
       // 这些是适配相关的配置
-      'vue/valid-v-for': 0 // vue 的 v-for 读取不到对应 v-for 中的内容
+      // 'vue/valid-v-for': 0 // vue 的 v-for 读取不到对应 v-for 中的内容
+    },
+  }
+)
+
+const oldConfig = [
+  ...compat.extends(
+    'eslint-config-standard',
+    'plugin:vue/vue3-recommended',
+  ),
+  {
+    plugins: {
+      vue,
+      // '@typescript-eslint': typescriptEslint,
+    },
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      // parser:vueParser,
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
     },
   }]
