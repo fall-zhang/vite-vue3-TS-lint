@@ -1,3 +1,4 @@
+<!-- 滑动验证码 -->
 <template>
   <div style="margin-top: 120px;">
     请完成安全验证
