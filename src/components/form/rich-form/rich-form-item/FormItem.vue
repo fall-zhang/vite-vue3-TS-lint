@@ -1,45 +1,41 @@
 <!--
 作者：张博飞
-用作：单个 form
+form-item，一个数据对应的值
 -->
 <!-- type 类型为 array 或者 object 时，调用 FormZone -->
 <template>
-  <!-- 单行内容使用 on-line -->
-  <div class="form-item" :class="basicSetterType.includes(currentSetter) && formOption.keyName.length < 7 && 'on-line'">
-    <div class="basic-label">{{ formOption.keyName }}
-      <HelpTooltip v-if="formOption.tips" :tip="formOption.tips" :path="path"></HelpTooltip>
+  <!-- 内容为单行： label 长度小于 7 或者使用单行的 setter -->
+  <div class="form-item" :class="basicSetterType.includes(currentSetter) && formOption.label.length < 7 && 'on-line'">
+    <div class="basic-label">{{ formOption.label }}
+      <HelpTooltip v-if="formOption.tips" :tip="formOption.tips"></HelpTooltip>
     </div>
     <!-- 简单类型的数据处理 -->
     <div v-if="basicSetterType.includes(currentSetter)" class="basic-form-item">
-      <el-input v-if="currentSetter == 'input'" v-model="formValue" type="text" size="small"
-        @input="onChangeInput"></el-input>
+      <el-input v-if="currentSetter == 'input'" v-model="formValue" type="text" @input="onChangeInput"></el-input>
       <div v-else-if="currentSetter == 'color'">
-        <el-input v-model="formValue" style="width: 68px;" size="small" type="color" @change="onChangeValue"></el-input>
+        <el-input v-model="formValue" style="width: 68px;" type="color" @change="onChangeValue"></el-input>
       </div>
-      <el-input-number v-else-if="currentSetter == 'number'" v-model="formValue" style="width: 88px;" size="small"
+      <el-input-number v-else-if="currentSetter == 'number'" v-model="formValue" style="width: 88px;"
         @change="onChangeValue"></el-input-number>
-      <el-switch v-else-if="currentSetter == 'switch'" v-model="formValue" size="small"
-        @change="onChangeValue"></el-switch>
-      <el-slider v-else-if="currentSetter == 'slider'" v-model="formValue" size="small"
-        style="width: 100px;margin-left: 8px;" :min="0" :max="60" @change="onChangeValue"></el-slider>
-      <el-select v-else-if="currentSetter == 'select'" v-model="formValue" size="small" :min="0" :max="20"
-        @change="onChangeValue">
+      <el-switch v-else-if="currentSetter == 'switch'" v-model="formValue" @change="onChangeValue"></el-switch>
+      <el-slider v-else-if="currentSetter == 'slider'" v-model="formValue" style="width: 100px;margin-left: 8px;"
+        :min="0" :max="60" @change="onChangeValue"></el-slider>
+      <el-select v-else-if="currentSetter == 'select'" v-model="formValue" :min="0" :max="20" @change="onChangeValue">
         <el-option v-for="optionItem in formOption.optionalValue" v-bind="optionItem"
           :key="optionItem.value"></el-option>
       </el-select>
     </div>
     <!-- 切换按钮 -->
-    <template v-if="allSetters.length > 1">
+    <!-- <template v-if="allSetters.length > 1">
       <div style="flex: 1;"></div>
       <div class="toggle-icon" @click="onChangeSetter">
         <IconRefresh class="g-icon-center" :class="setterIndex % 2 == 0 ? 'reverse' : ''" />
       </div>
-    </template>
-    <!-- 复杂数据处理，标题会独占一行 -->
+    </template> -->
   </div>
   <div v-if="!basicSetterType.includes(currentSetter)" class="default-container">
-    <el-input v-if="currentSetter === 'textarea'" v-model="formValue" size="small" type="textarea"
-      style="max-height: 72px;" @input="onChangeInput"></el-input>
+    <el-input v-if="currentSetter === 'textarea'" v-model="formValue" type="textarea" style="max-height: 72px;"
+      @input="onChangeInput"></el-input>
     <FormJSON v-else-if="currentSetter === 'json'" v-model="formValue" class="complex-container"
       @change="onChangeComplexValue">
     </FormJSON>
@@ -51,7 +47,7 @@
 
 <script lang="ts" setup>
 import { deepClone } from '@/utils'
-import HelpTooltip from './HelpTooltip.vue'
+import HelpTooltip from '../components/HelpTooltip.vue'
 import FormJSON from './FormItemJSON.vue'
 import { Refresh as IconRefresh } from '@icon-park/vue-next'
 const prop = defineProps({
@@ -150,7 +146,7 @@ function onChangeSetter() {
 
   &.on-line {
     height: 26px;
-    border-bottom: 1px solid #aeaeae67;
+    // border-bottom: 1px solid #aeaeae67;
   }
 
   .basic-form-item {

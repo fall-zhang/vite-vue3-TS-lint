@@ -4,7 +4,7 @@ type SimpleSetters = 'input' | 'textarea' | 'color' | 'switch' | 'slider' | 'sel
 // 复杂类型
 // function，会提供并且创建一个函数进行书写
 // json 会使用 JSON.parse 进行解析的复杂数据
-enum AllSetterType {
+export enum AllSetterType {
 
 }
 type SettersComplex = 'function' | 'json'
@@ -13,14 +13,19 @@ type SettersDate = 'date-picker' | 'date-range' | 'time-picker'| 'time-range'| '
 
 // 其它自定义的类型
 type SetterCustom = 'custom-array-list' | 'json'
-// 需要递归的类型
-type Recurrence = 'array' | 'object'
+// 一个值的类型是对象还是数组
+type SetterRich = 'array' | 'object' | 'flat'
 
 // 嵌套类型，组件嵌套组件
 // 以 children 的 keyId 作为 key 的对象构成
 
 type OptionalSelect = Array<{ label: string, value: string | boolean }>
-interface EchartsOption {
+
+interface RichOptionItem extends BaseOptionItem{
+  children: Array<BaseOptionItem>,
+}
+
+interface BaseOptionItem {
   // 属性的 key
   prop: string,
   // 字段描述
@@ -30,8 +35,18 @@ interface EchartsOption {
   optionalValue?: OptionalSelect,
   tips?: string,
    // 默认提供的默认值
-  default?: unknown,
-  children?: Array<EchartsOption>,
+  default?: unknown
+}
+
+type OptionItem = BaseOptionItem | RichOptionItem
+
+export type FormConfig ={
+  name:string
+  theme:string
+  globalConfig:{
+    labelWidth:string|number
+  }
+  optionList:OptionItem | OptionItem[]
 }
 
 // 示例
@@ -50,5 +65,5 @@ interface EchartsOption {
 // }
 
 export {
-  EchartsOption
+  OptionItem
 }

@@ -11,19 +11,19 @@
 import { Help as IconHelp } from '@icon-park/vue-next'
 // import { stringify } from 'uuid'
 const prop = defineProps<{
-  path: Record<string, any>[]
+  path?: Record<string, any>[]
   tip?: string
 }>()
 
 function onClickHelp() {
-  let path = ''
+  // let path = ''
   console.log(prop)
 
-  prop.path.forEach(item => {
-    if (item) path += item.keyId
-  })
+  // prop.path.forEach(item => {
+  //   if (item) path += item.keyId
+  // })
   // console.log(path)
-  toRaw(prop.path)
+  // toRaw(prop.path)
   // open('https://echarts.apache.org/zh/option.html#' + path)
 }
 
