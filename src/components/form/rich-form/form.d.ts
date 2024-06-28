@@ -9,7 +9,7 @@ export enum AllSetterType {
 }
 type SettersComplex = 'function' | 'json'
 
-type SettersDate = 'date-picker' | 'date-range' | 'time-picker'| 'time-range'| 'datetime-range'| 'datetime-range'
+type SettersDate = 'date-picker' | 'date-range' | 'time-picker' | 'time-range' | 'datetime-range' | 'datetime-range'
 
 // 其它自定义的类型
 type SetterCustom = 'custom-array-list' | 'json'
@@ -19,34 +19,30 @@ type SetterRich = 'array' | 'object' | 'flat'
 // 嵌套类型，组件嵌套组件
 // 以 children 的 keyId 作为 key 的对象构成
 
-type OptionalSelect = Array<{ label: string, value: string | boolean }>
+type OptionalSelect = Array<{ label: string, value: string | number }>
 
-interface RichOptionItem extends BaseOptionItem{
-  children: Array<BaseOptionItem>,
-}
 
-interface BaseOptionItem {
+export interface OptionItem {
   // 属性的 key
   prop: string,
   // 字段描述
   label: string,
   // 设置字段的类型
-  setters: Array<SimpleSetters | SettersComplex | SettersDate>,
+  setters: Array<SimpleSetters | SettersComplex | SettersDate | SetterRich>,
   optionalValue?: OptionalSelect,
   tips?: string,
-   // 默认提供的默认值
+  children?: Array<OptionItem>,
+  // 默认提供的默认值
   default?: unknown
 }
 
-type OptionItem = BaseOptionItem | RichOptionItem
-
-export type FormConfig ={
-  name:string
-  theme:string
-  globalConfig:{
-    labelWidth:string|number
+export type FormConfig = {
+  name: string
+  theme: string
+  globalConfig: {
+    labelWidth: string | number
   }
-  optionList:OptionItem | OptionItem[]
+  optionList: OptionItem | OptionItem[]
 }
 
 // 示例
@@ -63,7 +59,3 @@ export type FormConfig ={
 //   当想要使用默认填充的时候，可以使用
 //   fillValue:[213, 461, 124, 342, 197]
 // }
-
-export {
-  OptionItem
-}

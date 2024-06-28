@@ -1,19 +1,19 @@
 <!-- 通过 json 生成表单 -->
 <template>
   <el-button>导出表单为 json</el-button>
-  <div class="port-list">
-    <div v-for="(option, optIndex) in formOptionList" :key="optIndex">
-      <div v-if="Array.isArray(option)" placement="left" width="160px">
-        <li class="cell-item link-cell" @click="onChangeSetting(option)">
-          <span style="display: flex;">
-            {{ option }}
-            <HelpTooltip v-if="option.tips" :tip="option.tips" :path="currentPath"></HelpTooltip>
-          </span>
-          <IconRight class="g-icon-center" size="18px" />
-        </li>
+  <div class="info-content">
+    <div class="gen-form-content">
+      <div v-for="(option, optIndex) in formOptionList" :key="optIndex">
+        <div v-if="Array.isArray(option)" class="form-multiple" :style="{
+          'gridTemplateColumns': `repeat(${option.length},1fr)`
+        }">
+          <FormItem v-for="singleForm in option" :key="singleForm.prop" :receiveValue="currentForm[singleForm.prop]"
+            @change="(value) => onFormValueChange(value, singleForm)" :form-option="singleForm">
+          </FormItem>
+        </div>
+        <FormItem v-else :receiveValue="currentForm[option.prop]" @change="(value) => onFormValueChange(value, option)"
+          :form-option="option"></FormItem>
       </div>
-      <FormItem v-else :receiveValue="currentForm[option.prop]" @change="(value) => onFormValueChange(value, option)"
-        :form-option="option"></FormItem>
     </div>
     <!-- 当前的值{{ currentForm }} -->
     <div>
@@ -25,18 +25,31 @@
 </template>
 
 <script setup lang="ts">
+import { OptionItem } from './form';
 import { genColumn } from './util/genColumn'
-import { Right as IconRight, Return as IconReturn, } from '@icon-park/vue-next'
+// import { Right as IconRight, Return as IconReturn, } from '@icon-park/vue-next'
 const currentForm = reactive<Record<string, any>>({
-  name: ''
+  name: '',
+  jobInfo: []
 })
-const formOptionList = ref([
+const formOptionList = ref<Array<OptionItem[] | OptionItem>>([
   {
     label: '姓名',
     prop: 'name',
     setters: ['input'],
     default: '送'
   },
+  [{
+    label: '性别',
+    prop: 'gender',
+    setters: ['input'],
+    default: '送'
+  }, {
+    label: '年龄',
+    prop: 'age',
+    setters: ['number'],
+    default: '送'
+  }],
   {
     label: '信息',
     prop: 'jobInfo',
@@ -44,18 +57,18 @@ const formOptionList = ref([
     children: [
       {
         label: '工作任务',
-        value: 'job',
+        prop: 'job',
         setters: ['input'],
         default: '送'
       },
       {
         label: '工作时间',
-        value: 'job',
+        prop: 'job',
         setters: ['input'],
         default: '2022-11-11'
       },
     ],
-    default: '送'
+    default: []
   }
 ])
 const mainForm = reactive({})
@@ -71,9 +84,15 @@ function onGenTable() {
 </script>
 
 <style scoped lang="scss">
-.port-list {
+.info-content {
   display: grid;
   grid-template-columns: 1fr 360px;
+}
+
+.gen-form-content {
+  .form-multiple {
+    display: grid;
+  }
 }
 
 .lightButton {
@@ -90,10 +109,6 @@ function onGenTable() {
   border-radius: 4px;
   margin-bottom: 8px;
 
-  .show-list-info {
-    flex: 1 0 180px;
-  }
-
   .show-list-opt {
     position: sticky;
     width: 80px;
@@ -102,16 +117,5 @@ function onGenTable() {
     justify-content: flex-end;
     align-items: center;
   }
-}
-
-.show-list-info {
-  display: flex;
-  width: 100%;
-  box-sizing: border-box;
-  border: 1px solid rgba(121, 121, 121, 0.1);
-  border-radius: 6px;
-  padding: 8px 8px 8px 0;
-  margin-right: 12px;
-
 }
 </style>
