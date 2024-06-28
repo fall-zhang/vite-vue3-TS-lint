@@ -15,7 +15,7 @@ const handleClose = (key: string, keyPath: string[]) => {
 }
 const route = useRoute()
 
-const title = ref('模板系统')
+const title = ref('应用示例')
 watch(route, (newVal) => {
   if (route.meta.pageTitle && typeof newVal.meta.pageTitle === 'string') {
     title.value = newVal.meta.pageTitle

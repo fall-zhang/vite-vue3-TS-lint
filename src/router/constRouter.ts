@@ -4,6 +4,7 @@ import { BlankLayout } from '../layout'
 import { isDevelopment } from '@/config'
 import ErrorPage404 from '@/pages/error-pages/404.vue'
 import PageLayout from '@/layout/PageLayout.vue'
+import ExampleLayout from '@/layout/ExampleLayout.vue'
 const constRouters: RouteRecordRaw[] = [
   {
     path: '/redirect',
@@ -21,17 +22,17 @@ const constRouters: RouteRecordRaw[] = [
     component: () => import('@P/home.vue'),
     meta: { pageTitle: '首页' },
   },
-  {
-    path: '/example',
-    component: PageLayout,
-    meta: { pageTitle: '首页' },
-    children: [
-      {
-        path: '/example/fantable',
-        component: () => import('@/example/SpreadSheet.vue'),
-      }
-    ]
-  },
+  // {
+  //   path: '/example',
+  //   component: ExampleLayout,
+  //   meta: { pageTitle: '首页' },
+  //   children: [
+  //     {
+  //       path: '/example/fantable',
+  //       component: () => import('@/example/SpreadSheet.vue'),
+  //     }
+  //   ]
+  // },
   {
     path: '/',
     redirect: '/home',
