@@ -1,13 +1,20 @@
 <!-- 图形验证码 -->
 <template>
-  <div class="img-verify">
-    <!-- 画布，绑定一个点击事件，用于刷新验证码 -->
-    <canvas ref="verify" :width="width" :height="height" @click="handleDraw"></canvas>
-  </div>
+  <!-- 画布，绑定一个点击事件，用于刷新验证码 -->
+  <canvas class="img-verify" ref="verify" :width="state.width" :height="state.height" @click="reDrawCode"></canvas>
 </template>
 <script setup>
 import { reactive, onMounted, ref, toRefs } from 'vue'
+const props = defineProps({
+  modelValue: {
+    require: false,
+    default: '',
+    type: String
+  }
+})
+const emit = defineEmits(['update:modelValue'])
 const verify = ref(null)
+
 const state = reactive({
   str: 'AaBbCcDdEeFfGgHhJjKLMmNnPpQRrSsTtUuVvWwXxYyZ23456789', // 字符串
   width: 110,
@@ -22,8 +29,9 @@ onMounted(() => {
 })
 
 // 点击图片重新绘制
-const handleDraw = () => {
+const reDrawCode = () => {
   state.imgCode = draw()
+  emit('update:modelValue', state.imgCode)
 }
 
 // 随机数
@@ -118,13 +126,13 @@ const draw = () => {
 defineExpose({
   ...toRefs(state), // toRefs 为了防止结构数据丢失响应性
   verify,
-  handleDraw
+  reDrawCode
 })
 
 </script>
 <style scoped>
 /* 设置鼠标悬停样式 */
-.img-verify canvas {
+.img-verify {
   cursor: pointer;
 }
 </style>
