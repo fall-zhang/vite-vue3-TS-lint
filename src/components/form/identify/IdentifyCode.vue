@@ -25,6 +25,7 @@ onMounted(() => {
   if (verify.value) {
     // 初始化绘制图片验证码
     state.imgCode = draw()
+    emit('update:modelValue', state.imgCode)
   }
 })
 

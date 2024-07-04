@@ -1,4 +1,5 @@
 <!-- 滑动验证码 -->
+<!-- 可以参考这个组件 vue3-puzzle-vcode -->
 <template>
   <div style="margin-top: 120px;">
     请完成安全验证
