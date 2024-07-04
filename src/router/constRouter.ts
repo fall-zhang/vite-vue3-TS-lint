@@ -18,6 +18,11 @@ const constRouters: RouteRecordRaw[] = [
     ]
   },
   {
+    path: '/login',
+    component: () => import('@P/login/LoginPage.vue'),
+    meta: { pageTitle: '首页' },
+  },
+  {
     path: '/home',
     component: () => import('@P/home.vue'),
     meta: { pageTitle: '首页' },

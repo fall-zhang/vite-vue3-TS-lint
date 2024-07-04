@@ -20,7 +20,7 @@ function genRoutes(fileList: Record<string, any>) {
       }
     }
   })
-  console.log('🚀 ~ genRoutes ~ result:', result)
+  // console.log('🚀 ~ genRoutes ~ result:', result)
   return result
 }
 export const exampleRoutes = genRoutes(exampleComponents)
