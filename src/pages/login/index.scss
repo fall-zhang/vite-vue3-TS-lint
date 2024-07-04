@@ -10,6 +10,8 @@
   background-size: 100% 100%;
   background-size: cover;
 
+
+
   .login-box {
     position: relative;
     box-sizing: border-box;
@@ -83,7 +85,14 @@
         }
       }
     }
+
+    .third-part-logo {
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+    }
   }
+
 }
 
 @media screen and (width <=1250px) {
