@@ -1,6 +1,6 @@
 // 全局默认配置项
 
-// 首页地址（默认）
+// 首页地址（默认）：登录后跳转的地址
 export const ROUTE_HOME: string = '/home/index'
 
 // 登录页地址（默认）
