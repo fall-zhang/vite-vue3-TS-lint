@@ -91,6 +91,12 @@
       justify-content: space-evenly;
       width: 100%;
     }
+
+    .other-login-type {
+      display: grid;
+      margin-top: 16px;
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
 }

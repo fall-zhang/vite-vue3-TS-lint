@@ -12,6 +12,14 @@
         <!-- 基础登录方式 -->
         <LoginBase v-if="currentPage === 0" />
         <Motion v-if="currentPage === 0" :delay="350">
+          <Motion :delay="300">
+            <div class="other-login-type">
+              <el-button v-for="(item, index) in loginType" :key="index" @click="currentPage = index + 1"
+                size="default">
+                {{ item }}
+              </el-button>
+            </div>
+          </Motion>
           <el-form-item>
             <el-divider>
               <p class="text-gray-500 text-xs">
@@ -26,7 +34,7 @@
           </el-form-item>
         </Motion>
         <!-- 手机号登录 -->
-        <!-- <LoginPhone v-if="currentPage === 1" /> -->
+        <LoginPhone v-if="currentPage === 1" @back="currentPage = 0" />
         <!-- 二维码登录 -->
         <!-- <LoginQrCode v-if="currentPage === 2" /> -->
         <!-- 注册 -->
@@ -48,8 +56,9 @@ import LoginForget from "./components/LoginForget.vue";
 import LoginQrCode from "./components/LoginQrCode.vue";
 import Motion from './animation/motion'
 import { Alipay, Weibo, Wechat, TencentQq, Avatar } from "@icon-park/vue-next";
+const loginType = ref(['手机登录', '二维码登录', '第三方登录'])
 
-const thirdParty = ref([
+const thirdParty = shallowRef([
   {
     title: '腾讯 QQ',
     icon: TencentQq

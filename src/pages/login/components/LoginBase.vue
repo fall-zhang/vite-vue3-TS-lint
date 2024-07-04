@@ -49,18 +49,11 @@
         </el-button>
       </div>
       <el-button class="full-button" size="default" type="primary" :loading="loginBtnLoading"
-        :disabled="loginBtnDisabled">
+        :disabled="loginBtnDisabled" @click="onLogin">
         登录
       </el-button>
     </Motion>
-
-    <Motion :delay="300">
-      <div class="other-login-type">
-        <el-button v-for="(item, index) in loginType" :key="index" class="w-full mt-4" size="default">
-          {{ item }}
-        </el-button>
-      </div>
-    </Motion>
+    
   </el-form>
 
 
@@ -71,23 +64,32 @@ import { Lock, Iphone, User, Shield, Info } from "@icon-park/vue-next";
 import type { FormInstance, FormRules } from "element-plus";
 import IdentifyCode from "@/components/form/identify/IdentifyCode.vue";
 import Motion from '../animation/motion'
-import { isPhoneNumber } from "@/utils/number";
+import { useRouter } from "vue-router";
 const ruleForm = reactive({
   username: "admin",
   password: "admin123",
   verifyCode: ""
 });
-let verifyCode = ref('646a7a')
+const ruleFormRef = ref<FormInstance>()
 const loginBtnLoading = ref(false)
 const loginBtnDisabled = ref(false)
 const loginDay = ref(7)
 const checked = ref()
 const imgCode = ref()
-const loginType = ref(['手机登录', '二维码登录', '第三方登录'])
 /** 登录校验 */
 const REGEXP_PWD =
   /^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)(?!([^(0-9a-zA-Z)]|[()])+$)(?!^.*[\u4E00-\u9FA5].*$)([^(0-9a-zA-Z)]|[()]|[a-z]|[A-Z]|[0-9]){8,18}$/;
-const REGEXP_SIX = /^\d{6}$/;
+const router = useRouter()
+
+const onLogin = async () => {
+  if (!ruleFormRef.value) return;
+  await ruleFormRef.value.validate(valid => {
+    if (valid) {
+      loginBtnLoading.value = true;
+      router.push('/example')
+    }
+  });
+};
 
 const loginRules = reactive<FormRules>({
   password: [
@@ -109,7 +111,7 @@ const loginRules = reactive<FormRules>({
       validator: (rule, value, callback) => {
         if (value === "") {
           callback(new Error('请输入验证码'));
-        } else if (verifyCode.value !== value) {
+        } else if (imgCode.value.toLowerCase() !== value) {
           callback(
             new Error("请输入正确的验证码")
           );
@@ -121,41 +123,6 @@ const loginRules = reactive<FormRules>({
     }
   ]
 });
-
-/** 手机登录校验 */
-const phoneRules = reactive<FormRules>({
-  phone: [
-    {
-      validator: (rule, value, callback) => {
-        if (value === "") {
-          callback(new Error("请输入手机号码"));
-        } else if (!isPhoneNumber(value)) {
-          callback(new Error("请输入正确的手机号码格式"));
-        } else {
-          callback();
-        }
-      },
-      trigger: "blur"
-    }
-  ],
-  verifyCode: [
-    {
-      validator: (rule, value, callback) => {
-        if (value === "") {
-          callback(new Error("请输入验证码"));
-        } else if (!REGEXP_SIX.test(value)) {
-          callback(new Error("请输入 6 位数字验证码"));
-        } else {
-          callback();
-        }
-      },
-      trigger: "blur"
-    }
-  ]
-});
-
-
-const ruleFormRef = ref<FormInstance>();
 </script>
 
 <style scoped lang="scss">
@@ -169,11 +136,7 @@ const ruleFormRef = ref<FormInstance>();
   width: 100%
 }
 
-.other-login-type {
-  display: grid;
-  margin-top: 16px;
-  grid-template-columns: repeat(3, 1fr);
-}
+
 
 :deep(.el-input) {
   .el-input-group__append {
