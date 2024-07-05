@@ -7,6 +7,7 @@ import { useVerifyCode } from "../animation/verifyCode";
 import { Lock, Iphone, User, Shield, Info } from "@icon-park/vue-next";
 import { updateRules } from "./formRules";
 /** 忘记密码校验 */
+const emit = defineEmits(['back'])
 const repeatPasswordRule: FormItemRule[] = [
   {
     validator: (rule, value, callback) => {
@@ -103,7 +104,7 @@ function onBack() {
 
     <Motion :delay="300">
       <el-form-item>
-        <el-button class="w-full" size="default" @click="onBack">
+        <el-button class="w-full" size="default" @click="emit('back')">
           返回
         </el-button>
       </el-form-item>

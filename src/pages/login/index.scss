@@ -90,6 +90,14 @@
       display: flex;
       justify-content: space-evenly;
       width: 100%;
+
+      span {
+        cursor: pointer;
+
+        &:hover {
+          color: #409eff;
+        }
+      }
     }
 
     .other-login-type {
