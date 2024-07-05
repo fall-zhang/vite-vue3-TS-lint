@@ -27,6 +27,7 @@ export default tseslint.config(
       'no-unused-vars': 1, // 未使用的变量
       'comma-dangle': 0,
       'func-call-spacing': 1,
+      'indent': ['warn',2], // 需要 function 前面加空格
       'space-before-function-paren': 0, // 需要 function 前面加空格
 
       quotes: [2, 'single', {
