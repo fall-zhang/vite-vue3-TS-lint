@@ -31,6 +31,7 @@
     "echarts": "^5.5.0",
     "element-plus": "^2.7.6",
     "md5": "^2.3.0",
+    "qrcode": "^1.5.3",
     "vue": "^3.4.30",
     "vue-fantable": "^0.2.5",
     "vue-router": "^4.4.0",

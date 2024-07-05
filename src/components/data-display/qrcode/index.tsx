@@ -8,11 +8,13 @@ import {
   defineComponent
 } from 'vue'
 import './index.scss'
-import propTypes from '@/utils/propTypes'
-import { isString, cloneDeep } from '@pureadmin/utils'
 import QRCode, { type QRCodeRenderersOptions } from 'qrcode'
 import { Refresh as RefreshRight } from '@icon-park/vue-next'
+import { deepClone as cloneDeep } from '@/utils'
 
+function isString(rec:unknown):boolean{
+  return  typeof rec === 'string'
+}
 interface QrcodeLogo {
   src?: string;
   logoSize?: number;
@@ -25,30 +27,29 @@ interface QrcodeLogo {
 
 const props = {
   // img 或者 canvas,img不支持logo嵌套
-  tag: propTypes.string
-    .validate((v: string) => ['canvas', 'img'].includes(v))
-    .def('canvas'),
+  tag: String,
   // 二维码内容
-  text: {
-    type: [String, Array] as PropType<string | Recordable[]>,
-    default: null
-  },
+  text: String,
   // qrcode.js配置项
   options: {
     type: Object as PropType<QRCodeRenderersOptions>,
     default: (): QRCodeRenderersOptions => ({})
   },
   // 宽度
-  width: propTypes.number.def(200),
+  width: {
+    require:true,
+    default:200,
+    type:Number
+  },
   // logo
   logo: {
     type: [String, Object] as PropType<Partial<QrcodeLogo> | string>,
     default: (): QrcodeLogo | string => ''
   },
   // 是否过期
-  disabled: propTypes.bool.def(false),
+  disabled: Boolean,
   // 过期提示内容
-  disabledText: propTypes.string.def('')
+  disabledText: String
 }
 
 export default defineComponent({
@@ -58,7 +59,7 @@ export default defineComponent({
   setup(props, { emit }) {
     const { toCanvas, toDataURL } = QRCode
     const loading = ref(true)
-    const wrapRef = ref<Nullable<HTMLCanvasElement | HTMLImageElement>>(null)
+    const wrapRef = ref<HTMLCanvasElement | HTMLImageElement>()
     const renderText = computed(() => String(props.text))
     const wrapStyle = computed(() => {
       return {
@@ -193,7 +194,7 @@ export default defineComponent({
       await toCanvas(_canvas, content, options)
       return _canvas.width
     }
-    // 对于内容少的QrCode，增大容错率
+    // 对于内容少的 QrCode，增大容错率
     const getErrorCorrectionLevel = (content: string) => {
       if (content.length > 36) {
         return 'M'

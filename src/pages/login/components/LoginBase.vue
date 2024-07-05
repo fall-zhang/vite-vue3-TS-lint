@@ -44,7 +44,7 @@
             <Info></Info>
           </span>
         </el-checkbox>
-        <el-button link type="primary">
+        <el-button link type="primary" @click="emit('forget')">
           忘记密码
         </el-button>
       </div>
@@ -53,7 +53,7 @@
         登录
       </el-button>
     </Motion>
-    
+
   </el-form>
 
 
@@ -65,6 +65,7 @@ import type { FormInstance, FormRules } from "element-plus";
 import IdentifyCode from "@/components/form/identify/IdentifyCode.vue";
 import Motion from '../animation/motion'
 import { useRouter } from "vue-router";
+const emit = defineEmits(['forget'])
 const ruleForm = reactive({
   username: "admin",
   password: "admin123",

@@ -1,16 +1,14 @@
 <script setup lang="ts">
-import { useI18n } from "vue-i18n";
 import { ref, reactive } from "vue";
 import Motion from "../animation/motion";
 import { ElMessage as message } from "element-plus";
-import { updateRules } from "../utils/rule";
-import type { FormInstance } from "element-plus";
-import { useVerifyCode } from "../utils/verifyCode";
-import { $t, transformI18n } from "@/plugins/i18n";
-import { useUserStoreHook } from "@/store/modules/user";
+import type { FormInstance, FormItemRule, FormRules } from "element-plus";
+import { useVerifyCode } from "../animation/verifyCode";
 import { Lock, Iphone, User, Shield } from "@icon-park/vue-next";
+import { isPhoneNumber } from "@/utils/number";
+import { updateRules } from "./formRules";
+const emit = defineEmits(['back'])
 
-const { t } = useI18n();
 const checked = ref(false);
 const loading = ref(false);
 const ruleForm = reactive({
@@ -21,24 +19,25 @@ const ruleForm = reactive({
   repeatPassword: ""
 });
 const ruleFormRef = ref<FormInstance>();
-const { isDisabled, text } = useVerifyCode();
-const repeatPasswordRule = [
+const { isDisabled, timeText } = useVerifyCode();
+
+
+const repeatPasswordRule: FormItemRule[] = [
   {
     validator: (rule, value, callback) => {
-      if (value === "") {
-        callback(new Error(transformI18n($t("login.purePassWordSureReg"))));
+      if (value === '') {
+        callback(new Error('请输入确认密码'))
       } else if (ruleForm.password !== value) {
         callback(
-          new Error(transformI18n($t("login.purePassWordDifferentReg")))
-        );
+          new Error('两次密码不一致！')
+        )
       } else {
-        callback();
+        callback()
       }
     },
-    trigger: "blur"
+    trigger: 'blur'
   }
-];
-
+]
 const onUpdate = async (formEl: FormInstance | undefined) => {
   loading.value = true;
   if (!formEl) return;
@@ -47,14 +46,16 @@ const onUpdate = async (formEl: FormInstance | undefined) => {
       if (checked.value) {
         // 模拟请求，需根据实际开发进行修改
         setTimeout(() => {
-          message(transformI18n($t("login.pureRegisterSuccess")), {
+          message({
+            message: "注册成功",
             type: "success"
           });
           loading.value = false;
         }, 2000);
       } else {
         loading.value = false;
-        message(transformI18n($t("login.pureTickPrivacy")), {
+        message({
+          message: "请勾选隐私政策",
           type: "warning"
         });
       }
@@ -66,7 +67,6 @@ const onUpdate = async (formEl: FormInstance | undefined) => {
 
 function onBack() {
   useVerifyCode().end();
-  useUserStoreHook().SET_CURRENTPAGE(0);
 }
 </script>
 
@@ -76,30 +76,29 @@ function onBack() {
       <el-form-item :rules="[
         {
           required: true,
-          message: transformI18n($t('login.pureUsernameReg')),
+          message: '请输入账号',
           trigger: 'blur'
         }
       ]" prop="username">
-        <el-input v-model="ruleForm.username" clearable :placeholder="t('login.pureUsername')" :prefix-icon="User" />
+        <el-input v-model="ruleForm.username" clearable placeholder="账号" :prefix-icon="User" />
       </el-form-item>
     </Motion>
 
     <Motion :delay="100">
       <el-form-item prop="phone">
-        <el-input v-model="ruleForm.phone" clearable :placeholder="t('login.purePhone')" :prefix-icon="Iphone" />
+        <el-input v-model="ruleForm.phone" clearable placeholder="手机号码" :prefix-icon="Iphone" />
       </el-form-item>
     </Motion>
 
     <Motion :delay="150">
       <el-form-item prop="verifyCode">
-        <div class="w-full flex justify-between">
-          <el-input v-model="ruleForm.verifyCode" clearable :placeholder="t('login.pureSmsVerifyCode')"
-            :prefix-icon="Shield" />
+        <div class="identify-code">
+          <el-input v-model="ruleForm.verifyCode" clearable placeholder="短信验证码" :prefix-icon="Shield" />
           <el-button :disabled="isDisabled" class="ml-2" @click="useVerifyCode().start(ruleFormRef, 'phone')">
             {{
-              text.length > 0
-                ? text + t("login.pureInfo")
-                : t("login.pureGetVerifyCode")
+              timeText.length > 0
+                ? '秒后重新获取'
+                : '获取验证码'
             }}
           </el-button>
         </div>
@@ -108,25 +107,23 @@ function onBack() {
 
     <Motion :delay="200">
       <el-form-item prop="password">
-        <el-input v-model="ruleForm.password" clearable show-password :placeholder="t('login.purePassword')"
-          :prefix-icon="Lock" />
+        <el-input v-model="ruleForm.password" clearable show-password placeholder="密码" :prefix-icon="Lock" />
       </el-form-item>
     </Motion>
 
     <Motion :delay="250">
       <el-form-item :rules="repeatPasswordRule" prop="repeatPassword">
-        <el-input v-model="ruleForm.repeatPassword" clearable show-password :placeholder="t('login.pureSure')"
-          :prefix-icon="Lock" />
+        <el-input v-model="ruleForm.repeatPassword" clearable show-password placeholder="确认密码" :prefix-icon="Lock" />
       </el-form-item>
     </Motion>
 
     <Motion :delay="300">
       <el-form-item>
         <el-checkbox v-model="checked">
-          {{ t("login.pureReadAccept") }}
+          我已仔细阅读并接受
         </el-checkbox>
         <el-button link type="primary">
-          {{ t("login.purePrivacyPolicy") }}
+          《隐私政策》
         </el-button>
       </el-form-item>
     </Motion>
@@ -134,17 +131,27 @@ function onBack() {
     <Motion :delay="350">
       <el-form-item>
         <el-button class="w-full" size="default" type="primary" :loading="loading" @click="onUpdate(ruleFormRef)">
-          {{ t("login.pureDefinite") }}
+          确定
         </el-button>
       </el-form-item>
     </Motion>
 
     <Motion :delay="400">
       <el-form-item>
-        <el-button class="w-full" size="default" @click="onBack">
-          {{ t("login.pureBack") }}
+        <el-button class="w-full" size="default" @click="emit('back')">
+          返回
         </el-button>
       </el-form-item>
     </Motion>
   </el-form>
 </template>
+
+<style lang="scss">
+.identify-code {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+</style>

@@ -10,7 +10,7 @@
           <h2 class="logo-text">Vue Admin</h2>
         </div>
         <!-- 基础登录方式 -->
-        <LoginBase v-if="currentPage === 0" />
+        <LoginBase v-if="currentPage === 0" @forget="currentPage = 4" />
         <Motion v-if="currentPage === 0" :delay="350">
           <Motion :delay="300">
             <div class="other-login-type">
@@ -36,11 +36,11 @@
         <!-- 手机号登录 -->
         <LoginPhone v-if="currentPage === 1" @back="currentPage = 0" />
         <!-- 二维码登录 -->
-        <!-- <LoginQrCode v-if="currentPage === 2" /> -->
+        <LoginQrCode v-if="currentPage === 2" @back="currentPage = 0" />
         <!-- 注册 -->
-        <!-- <LoginRegister v-if="currentPage === 3" /> -->
+        <LoginRegister v-if="currentPage === 3" @back="currentPage = 0" />
         <!-- 忘记密码 -->
-        <!-- <LoginForget v-if="currentPage === 4" /> -->
+        <LoginForget v-if="currentPage === 4" @back="currentPage = 0"  />
       </div>
     </div>
   </div>
@@ -56,7 +56,7 @@ import LoginForget from "./components/LoginForget.vue";
 import LoginQrCode from "./components/LoginQrCode.vue";
 import Motion from './animation/motion'
 import { Alipay, Weibo, Wechat, TencentQq, Avatar } from "@icon-park/vue-next";
-const loginType = ref(['手机登录', '二维码登录', '第三方登录'])
+const loginType = ref(['手机登录', '二维码登录', '注册'])
 
 const thirdParty = shallowRef([
   {
