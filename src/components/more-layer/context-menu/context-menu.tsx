@@ -1,6 +1,7 @@
 import './context-menu.scss'
 import { onMounted, onUnmounted, ref } from 'vue'
 import menuConfig from './context-menu-list.json'
+import {MenuItem} from './type'
 
 const CONTEXT_ID = '__FALL_CONTEXT_MENU'
 
@@ -12,9 +13,20 @@ export default defineComponent({
       default: () => menuConfig
     }
   },
-  setup(props: any, context: any) {
-    const contextMenu = ref()
+  setup(props, {slots,emit}) {
+    const contextMenu = ref<HTMLDivElement>()
     const menuContent = ref()
+    const activeChain = ref<any[]>([])
+    const clearSubMenuTimber: NodeJS.Timeout[] = []
+    // onMounted(()=>{
+    //   console.log('🚀 ~ onMounted ~ contextMenu.value:', contextMenu.value)
+    //   if(contextMenu.value) {
+    //     contextMenu.value.oncontextmenu = function(){
+    //       console.log('🚀 ~ onMounted ~ false:', false)
+    //       return false
+    //     }
+    //   }
+    // })
     function clickOutSide() {
       menuContent.value.style.display = 'none'
     }
@@ -25,8 +37,6 @@ export default defineComponent({
       document.removeEventListener('click', clickOutSide)
     })
     let outMenuEl: HTMLDivElement | null = null
-    const activeChain = ref<any[]>([])
-    const clearSubMenuTimber: NodeJS.Timeout[] = []
     function onMouseOverNoChildren(receive?: string) {
       const timber = setTimeout(() => {
         let index = 0
@@ -59,8 +69,9 @@ export default defineComponent({
     }
 
     function onClickTemplate(ev: MouseEvent) {
+      console.log('🚀 ~ onClickTemplate ~ ev.target:', ev)
       ev.stopPropagation()
-      console.log('🚀 ~ onClickTemplate ~ ev.target:', ev.pageX,ev.pageY)
+      ev.preventDefault()
       // const node = contextMenu.value.getBoundingClientRect()
       const newElementPosition:Partial<ElementCSSInlineStyle['style']> = {
         top: ev.pageY + 'px',
@@ -71,14 +82,15 @@ export default defineComponent({
       }
       createElement(newElementPosition)
       menuContent.value.style = newElementPosition
-      console.log(97979,outMenuEl)
       if (outMenuEl) {
         outMenuEl.innerHTML = ''
         outMenuEl.appendChild(menuContent.value)
       }
     }
 
-    function onEnterMenuHasChildren(ev: MouseEvent, menuItem: any) {
+    function onEnterMenuHasChildren(ev: MouseEvent, menuItem: MenuItem) {
+      console.log('🚀 ~ onEnterMenuHasChildren ~ menuItem:', menuItem)
+      console.log('🚀 ~ onEnterMenuHasChildren ~ menuItem:', activeChain.value)
       if (clearSubMenuTimber) {
         clearSubMenuTimber.forEach((timber, index) => {
           if (index !== clearSubMenuTimber.length - 1) clearTimeout(timber)
@@ -86,10 +98,13 @@ export default defineComponent({
       }
       if (!activeChain.value.includes(menuItem.key)) {
         activeChain.value.push(menuItem.key)
+        if(props.menuList.includes(menuItem)){
+          activeChain.value = [menuItem.key]
+        }
       }
     }
     const onClickMenuItem = (info: any) => {
-      context.emit('command', info)
+      emit('command', info)
     }
     const MenuListItem = (props: any, { slots }: any) => {
       const ulStyle = {
@@ -145,9 +160,9 @@ export default defineComponent({
       )
     }
     return () => (
-      <div>
-        <div ref={contextMenu} onClick={onClickTemplate} style="display:inline-block">
-          {context.slots.default()}
+      <>
+        <div ref={contextMenu} onContextmenu={(e) => {e.preventDefault();onClickTemplate(e)}} style="display:inline-block">
+          {slots.default ?slots.default():''}
         </div>
         <div ref={menuContent} style="display:none" class="menu-container">
           {
@@ -175,7 +190,7 @@ export default defineComponent({
             </ul>
           }
         </div>
-      </div>
+      </>
     )
   }
 })

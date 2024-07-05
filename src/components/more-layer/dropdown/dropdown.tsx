@@ -2,6 +2,8 @@ import type { SetupContext } from 'vue'
 import './index.scss'
 import DropDownItem from './dropdown-item'
 import { MenuItem } from './type'
+import Motion from './motion'
+import { useMotion } from '@vueuse/motion'
 const DROPDOWN_POP_ID = 'FALL_DROPDOWN'
 
 const DropdownMenu = defineComponent({
@@ -60,6 +62,8 @@ const DropdownMenu = defineComponent({
   setup(props, context: SetupContext) {
     const contextMenu = ref()
     const menuContent = ref()
+    const activeChain = ref<any[]>([])
+    const clearSubMenuTimber: Array<NodeJS.Timeout|number> = []
     function clickOutSide() {
       menuContent.value.style.display = 'none'
       // console.log('取消展示')
@@ -71,8 +75,7 @@ const DropdownMenu = defineComponent({
       document.removeEventListener('click', clickOutSide)
     })
     let outMenuEl: HTMLDivElement | null = null
-    const activeChain = ref<any[]>([])
-    const clearSubMenuTimber: Array<NodeJS.Timeout|number> = []
+   
     function onMouseOverNoChildren(receive?: string) {
       const timber: NodeJS.Timeout|number = setTimeout(() => {
         let index = 0
@@ -111,6 +114,16 @@ const DropdownMenu = defineComponent({
       }
       createElement(newElementPosition)
       menuContent.value.style = newElementPosition
+      useMotion(menuContent, {
+        initial: { opacity: 0, y: 12 },
+        enter: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            delay:200
+          }
+        }
+      })
       if (outMenuEl) {
         outMenuEl.innerHTML = ''
         outMenuEl.appendChild(menuContent.value)
@@ -164,26 +177,29 @@ const DropdownMenu = defineComponent({
         </li>
       )
     }
+
     return () => (
       <div>
         <div ref={contextMenu}  onClick={onClickTemplate} class="dropdown-trigger-container">
           {context.slots.default?context.slots.default():''}
         </div>
         <div ref={menuContent} style="display:none" class="menu-container">
-          {<ul class="menu-list">
-            {props.menuList.map((item: any) => {
-              if (item.children) {
-                return <MenuListItem key={item.key} current={item} >{item.label}</MenuListItem>
-              }
-              return (
-                <li key={item.key} class={{ 'menu-list-item': true, 'has-gap': item.divided }}
-                  onMouseover={() => onMouseOverNoChildren()} onClick={() => onClickMenuItem(item)}>
-                  {item.label}
-                  <div style={{ width: '20px', height: '20px' }}></div>
-                </li>
-              )
-            })}
-          </ul>}
+          {
+            <ul class="menu-list">
+              {props.menuList.map((item: any) => {
+                if (item.children) {
+                  return <MenuListItem key={item.key} current={item} >{item.label}</MenuListItem>
+                }
+                return (
+                  <li key={item.key} class={{ 'menu-list-item': true, 'has-gap': item.divided }}
+                    onMouseover={() => onMouseOverNoChildren()} onClick={() => onClickMenuItem(item)}>
+                    {item.label}
+                    <div style={{ width: '20px', height: '20px' }}></div>
+                  </li>
+                )
+              })}
+            </ul>
+          }
         </div>
       </div>)
   }
