@@ -1,28 +1,22 @@
-import vue from 'eslint-plugin-vue'
-// import typescriptEslint from '@typescript-eslint/eslint-plugin'
-import path from 'node:path'
-import { fileURLToPath } from 'node:url'
-import eslint from '@eslint/js'
-// import typescriptParser from '@typescript-eslint/parser'
-import tseslint from 'typescript-eslint'
-import { FlatCompat } from '@eslint/eslintrc'
+import pluginVue from 'eslint-plugin-vue'
+import vueTsEslintConfig from '@vue/eslint-config-typescript'
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-  recommendedConfig: eslint.configs.recommended,
-  allConfig: eslint.configs.all
-})
-
-export default tseslint.config(
-  eslint.configs.recommended,
-  ...tseslint.configs.recommended,
+export default [
   {
-    plugins: {
-      vue,
-    },
-    rules: {
+    name: 'app/files-to-lint',
+    files: ['**/*.{ts,mts,tsx,vue}'],
+  },
+
+  {
+    name: 'app/files-to-ignore',
+    ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
+  },
+
+  ...pluginVue.configs['flat/essential'],
+  ...vueTsEslintConfig(),
+{
+  files: ['**/*.{ts,mts,tsx,vue}'],
+      rules: {
       'no-undef': 0, // 未命名变量不报错：当未命名变量的检查交给 ts 类型检查器时使用
       'no-unused-vars': 1, // 未使用的变量
       'comma-dangle': 0,
@@ -60,27 +54,5 @@ export default tseslint.config(
       // 这些是适配相关的配置
       // 'vue/valid-v-for': 0 // vue 的 v-for 读取不到对应 v-for 中的内容
     },
-  }
-)
-
-const oldConfig = [
-  ...compat.extends(
-    'eslint-config-standard',
-    'plugin:vue/vue3-recommended',
-  ),
-  {
-    plugins: {
-      vue,
-      // '@typescript-eslint': typescriptEslint,
-    },
-    languageOptions: {
-      ecmaVersion: 'latest',
-      sourceType: 'module',
-      // parser:vueParser,
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-    },
-  }]
+}
+]
