@@ -27,7 +27,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import moment from 'dayjs'
 const dateMap = ['星期天', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
 // props: ,
@@ -41,7 +41,7 @@ defineProps({
     default: () => ([])
   }
 })
-export default {
+export default defineComponent({
   name: 'WorkGroup',
   model: {
     prop: 'value',
@@ -107,7 +107,7 @@ export default {
       this.$emit('updateWork')
     },
   }
-}
+})
 </script>
 
 <style scoped lang="scss">
@@ -156,6 +156,5 @@ export default {
   border-radius: 6px;
   padding: 8px 8px 8px 0;
   margin-right: 12px;
-
 }
 </style>
