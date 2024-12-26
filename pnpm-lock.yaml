@@ -32,6 +32,9 @@ dependencies:
   md5:
     specifier: ^2.3.0
     version: 2.3.0
+  pinia:
+    specifier: ^2.3.0
+    version: 2.3.0(typescript@5.6.3)(vue@3.5.12)
   qrcode:
     specifier: ^1.5.4
     version: 1.5.4
@@ -5008,6 +5011,23 @@ packages:
     engines: {node: '>=0.10'}
     hasBin: true
     dev: true
+
+  /pinia@2.3.0(typescript@5.6.3)(vue@3.5.12):
+    resolution: {integrity: sha512-ohZj3jla0LL0OH5PlLTDMzqKiVw2XARmC1XYLdLWIPBMdhDW/123ZWr4zVAhtJm+aoSkFa13pYXskAvAscIkhQ==}
+    peerDependencies:
+      typescript: '>=4.4.4'
+      vue: ^2.7.0 || ^3.5.11
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': 6.6.4
+      typescript: 5.6.3
+      vue: 3.5.12(typescript@5.6.3)
+      vue-demi: 0.14.10(vue@3.5.12)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+    dev: false
 
   /pkg-types@1.2.1:
     resolution: {integrity: sha512-sQoqa8alT3nHjGuTjuKgOnvjo4cljkufdtLMnO2LBP/wRwuDlo1tkaEdMxCRhyGRPacv/ztlZgDPm2b7FAmEvw==}
