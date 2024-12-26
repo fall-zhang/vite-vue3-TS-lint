@@ -53,7 +53,7 @@ export interface AuthState {
   authButtonList: {
     [key: string]: string[];
   };
-  authMenuList: Menu.MenuOptions[];
+  authMenuList: unknown[];
 }
 
 /* KeepAliveState */
