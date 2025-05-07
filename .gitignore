@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# unplugin-auto-import 自动生成的类型文件
+src/global/auto-imports.d.ts
+src/global/components.d.ts
+
 # cache
 .eslintcache
 

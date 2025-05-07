@@ -1,17 +1,19 @@
 // @see: https://cz-git.qbenben.com/zh/guide
-const fs = require('fs')
-const path = require('path')
+import fs from 'node:fs'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 // src 下的目录
 const scopes = fs
   .readdirSync(path.resolve(__dirname, 'src'), { withFileTypes: true })
   .filter(dirent => dirent.isDirectory())
   .map(dirent => dirent.name.replace(/s$/, '')).concat(
-    'markdown', 'global'
+    'markdown'
   )
-
 /** @type {import('cz-git').UserConfig} */
-module.exports = {
+export default {
   ignores: [commit => commit.includes('init')],
   extends: ['@commitlint/config-conventional'],
   rules: {

@@ -1,4 +1,4 @@
-> 开箱即用的 vue3 模板
+> 开箱即用的 vue3 模板，内置大量组件
 
 ## 起步
 
@@ -38,13 +38,12 @@
 - [x] 读取 Component 下的所有文件，在 `components` 路由下面展示，可自行跳转到 `components` 路由下面查看
 - [x] 添加一些已经预设好的 Component
 - [x] css 预处理器为 sass，统一为 element 的 css 样式编辑器
-- [x] 将自动导入功能进行提取放入其它文件夹内
 - [x] 添加 collection 收集器，用来收集所有组件
 - [x] 分离 component 文件夹，不同组件放置到不同区域
 
 - 该项目只提供组件内容，以及展示组件，不包括页面逻辑之类（只有展示组件的页面，菜单逻辑等，可根据需要自行实现）
-- 默认解析 `src/views` 下的文件为路由，文件夹以 `_` 开头时会忽略解析。
 - 读取 Component 下的所有文件，在 `components` 路由下面展示，可自行跳转到 `components` 路由下面查看
+- storybook 可以通过 `npm run storybook` 查看该应用的组件
 - 添加一些已经预设好的 Component 路由支持
 - 配置 vue-router 路由
 - css 预处理器为 sass，统一为 element 的 css 样式编辑器
