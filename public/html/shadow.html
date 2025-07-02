@@ -1,0 +1,48 @@
+<title>CSS 边角阴影，hover 展示</title>
+<style type="text/css">
+  .bg-dd {
+    background-color: white;
+    position: relative;
+    transition: .5s;
+    /* z-index: 2; */
+  }
+
+  .bg-dd:hover::before,
+  .bg-dd:hover::after {
+    width: 50%;
+    height: 100%;
+    top: 0;
+    filter: blur(3px);
+    z-index: -1;
+    background: linear-gradient(to bottom, transparent, #989898);
+  } 
+
+  .bg-dd::before,
+  .bg-dd::after {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 100%;
+    transition: .5s;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+  }
+
+  .bg-dd:hover::before {
+    left: 0;
+    transform: skewY(-3deg);
+  }
+
+  .bg-dd:hover::after {
+    right: 0;
+    transform: skewY(3deg);
+  }
+</style>
+
+
+
+<section>
+  <div class="bg-dd" style="height: 400px;width: 600px;">
+  </div>
+</section>

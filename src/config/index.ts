@@ -16,4 +16,6 @@ export const TIME_OUT: number = 20000
 
 export const env = import.meta.env
 
-export const isDevelopment = env.MODE === 'development'
+export const isDevelopment = import.meta.env.MODE === 'development'
+
+export const DEFAULT_PRIMARY: string = '#009688'

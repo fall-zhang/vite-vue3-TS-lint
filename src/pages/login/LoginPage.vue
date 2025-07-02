@@ -7,7 +7,7 @@
       <div class="login-form">
         <div class="login-logo">
           <img class="login-icon" src="@/assets/images/logo.svg" alt="" />
-          <h2 class="logo-text">Vue Admin</h2>
+          <h2 class="logo-text">Vue Template</h2>
         </div>
         <!-- 基础登录方式 -->
         <LoginBase v-if="currentPage === 0" @forget="currentPage = 4" />
@@ -40,7 +40,7 @@
         <!-- 注册 -->
         <LoginRegister v-if="currentPage === 3" @back="currentPage = 0" />
         <!-- 忘记密码 -->
-        <LoginForget v-if="currentPage === 4" @back="currentPage = 0"  />
+        <LoginForget v-if="currentPage === 4" @back="currentPage = 0" />
       </div>
     </div>
   </div>
@@ -49,13 +49,13 @@
 <script setup lang="ts" name="login">
 // import LoginForm from "./components/LoginForm.vue";
 // import SwitchDark from "@/components/SwitchDark/index.vue";
-import LoginBase from "./components/LoginBase.vue";
-import LoginPhone from "./components/LoginPhone.vue";
-import LoginRegister from "./components/LoginRegister.vue";
-import LoginForget from "./components/LoginForget.vue";
-import LoginQrCode from "./components/LoginQrCode.vue";
+import LoginBase from './components/LoginBase.vue'
+import LoginPhone from './components/LoginPhone.vue'
+import LoginRegister from './components/LoginRegister.vue'
+import LoginForget from './components/LoginForget.vue'
+import LoginQrCode from './components/LoginQrCode.vue'
 import Motion from './animation/motion'
-import { Alipay, Weibo, Wechat, TencentQq, Avatar } from "@icon-park/vue-next";
+import { Alipay, Weibo, Wechat, TencentQq, Avatar } from '@icon-park/vue-next'
 const loginType = ref(['手机登录', '二维码登录', '注册'])
 
 const thirdParty = shallowRef([

@@ -3,9 +3,9 @@
   即：全局引用样式都改通过该文件引用
 */
 
-@import "./variable.scss";
-@import "./reset.scss";
-@import "./global.scss";
+@use "./variable.scss";
+@use "./reset.scss";
+@use "./global.scss";
 
 /* 设置滚动条颜色 */
 body ::-webkit-scrollbar-thumb {

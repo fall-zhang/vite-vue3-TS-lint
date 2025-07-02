@@ -60,17 +60,17 @@
 </template>
 
 <script setup lang="ts">
-import { Lock, Iphone, User, Shield, Info } from "@icon-park/vue-next";
-import type { FormInstance, FormRules } from "element-plus";
-import IdentifyCode from "@/components/form/identify/IdentifyCode.vue";
+import { Lock, Iphone, User, Shield, Info } from '@icon-park/vue-next'
+import type { FormInstance, FormRules } from 'element-plus'
+import IdentifyCode from '@/components/form/identify/IdentifyCode.vue'
 import Motion from '../animation/motion'
-import { useRouter } from "vue-router";
+import { useRouter } from 'vue-router'
 const emit = defineEmits(['forget'])
 const ruleForm = reactive({
-  username: "admin",
-  password: "admin123",
-  verifyCode: ""
-});
+  username: 'admin',
+  password: 'admin123',
+  verifyCode: ''
+})
 const ruleFormRef = ref<FormInstance>()
 const loginBtnLoading = ref(false)
 const loginBtnDisabled = ref(false)
@@ -79,51 +79,51 @@ const checked = ref()
 const imgCode = ref()
 /** 登录校验 */
 const REGEXP_PWD =
-  /^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)(?!([^(0-9a-zA-Z)]|[()])+$)(?!^.*[\u4E00-\u9FA5].*$)([^(0-9a-zA-Z)]|[()]|[a-z]|[A-Z]|[0-9]){8,18}$/;
+  /^(?![0-9]+$)(?![a-z]+$)(?![A-Z]+$)(?!([^(0-9a-zA-Z)]|[()])+$)(?!^.*[\u4E00-\u9FA5].*$)([^(0-9a-zA-Z)]|[()]|[a-z]|[A-Z]|[0-9]){8,18}$/
 const router = useRouter()
 
 const onLogin = async () => {
-  if (!ruleFormRef.value) return;
+  if (!ruleFormRef.value) return
   await ruleFormRef.value.validate(valid => {
     if (valid) {
-      loginBtnLoading.value = true;
+      loginBtnLoading.value = true
       router.push('/example')
     }
-  });
-};
+  })
+}
 
 const loginRules = reactive<FormRules>({
   password: [
     {
       validator: (rule, value, callback) => {
-        if (value === "") {
-          callback(new Error("请输入密码"));
+        if (value === '') {
+          callback(new Error('请输入密码'))
         } else if (!REGEXP_PWD.test(value)) {
-          callback(new Error("密码格式应为8-18位数字、字母、符号的任意两种组合"));
+          callback(new Error('密码格式应为8-18位数字、字母、符号的任意两种组合'))
         } else {
-          callback();
+          callback()
         }
       },
-      trigger: "blur"
+      trigger: 'blur'
     }
   ],
   verifyCode: [
     {
       validator: (rule, value, callback) => {
-        if (value === "") {
-          callback(new Error('请输入验证码'));
+        if (value === '') {
+          callback(new Error('请输入验证码'))
         } else if (imgCode.value.toLowerCase() !== value) {
           callback(
-            new Error("请输入正确的验证码")
-          );
+            new Error('请输入正确的验证码')
+          )
         } else {
-          callback();
+          callback()
         }
       },
-      trigger: "blur"
+      trigger: 'blur'
     }
   ]
-});
+})
 </script>
 
 <style scoped lang="scss">

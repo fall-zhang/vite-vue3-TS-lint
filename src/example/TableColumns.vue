@@ -1,7 +1,7 @@
 <template>
   <!-- 查找区域 -->
   <div class="search-zone">
-    <el-form label-width="90px" :model="searchForm" size="mini">
+    <el-form label-width="90px" :model="searchForm" size="small">
       <div style="display: grid;grid-template-columns: repeat(4,1fr);">
         <el-form-item label="名称">
           <el-input v-model="searchForm.name"></el-input>
@@ -59,7 +59,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 const tableColumns = [
   { prop: 'jhmc', label: '序号', width: 120, align: 'center', useSlot: 'plan-name', },
   { prop: 'xgnr', label: '相关内容', width: 90, align: 'center', useSlot: 'relative-line', },

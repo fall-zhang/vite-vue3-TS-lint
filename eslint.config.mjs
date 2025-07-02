@@ -1,7 +1,7 @@
 import pluginVue from 'eslint-plugin-vue'
-import vueTsEslintConfig from '@vue/eslint-config-typescript'
+import {defineConfigWithVueTs,vueTsConfigs} from '@vue/eslint-config-typescript'
 
-export default [
+export default defineConfigWithVueTs([
   {
     name: 'app/files-to-lint',
     files: ['**/*.{mjs,js,ts,mts,tsx,vue}'],
@@ -13,7 +13,7 @@ export default [
   },
 
   ...pluginVue.configs['flat/essential'],
-  ...vueTsEslintConfig(),
+   vueTsConfigs.recommended,
   {
     rules: {
       'no-undef': 0, // 未命名变量不报错：当未命名变量的检查交给 ts 类型检查器时使用
@@ -56,4 +56,4 @@ export default [
       // 'vue/valid-v-for': 0 // vue 的 v-for 读取不到对应 v-for 中的内容
     },
   }
-]
+])

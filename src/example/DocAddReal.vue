@@ -42,14 +42,14 @@
     </div>
     <div class="button-operate">
       <div>内容排版仅供参考，一切以最终生成 pdf 排版为准</div>
-      <el-button class="sparkButton" size="mini" @click="onSubmitCheck">生成</el-button>
+      <el-button class="sparkButton" size="small" @click="onSubmitCheck">生成</el-button>
     </div>
   </LayoutCard>
 </template>
 
-<script  lang="ts">
+<script lang="ts">
 import LayoutCard from './components/LayoutCard.vue'
-import LightDialog from '@/components/form/LightDialog.vue'
+import LightDialog from '@/components/dialog/LightFormDialog.vue'
 import { upload } from './api/doc-add'
 import SingleEdit from './components/SingleEdit.vue'
 import ContentEdit from './components/ContentEdit.vue'
